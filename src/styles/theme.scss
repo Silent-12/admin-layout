@@ -3,7 +3,11 @@
 :root {
   /* 基础色 */
   --ao-color: #ffffff;
+  /* 主题色来源：默认跟随 Element Plus 主色，宿主可在自己的全局样式中覆盖；不随主题变化，仅 :root 定义 */
+  --main-color: var(--el-color-primary);
   --theme-color: var(--main-color);
+  /* 全局圆角基数，布局与组件包的圆角计算均基于它；不随主题变化，仅 :root 定义 */
+  --custom-radius: 0.75rem;
   /* Element Plus 语义色别名，统一由 Element Plus 主题变量提供 */
   --ao-primary: var(--el-color-primary);
   --ao-secondary: var(--el-color-info);
