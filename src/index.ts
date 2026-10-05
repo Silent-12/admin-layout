@@ -27,6 +27,7 @@
  * ```
  */
 import type { App, Plugin } from 'vue'
+import './styles/index.scss'
 import zhMessages from './locales/zh.json'
 import enMessages from './locales/en.json'
 import { version } from './version'

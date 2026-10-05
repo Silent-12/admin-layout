@@ -15,14 +15,12 @@
 
 // ==================== 主题切换圆形扩散动画 ====================
 // 定义基础变量
-$bg-animation-color-light: #000;
-$bg-animation-color-dark: #fff;
 $bg-animation-duration: 0.5s;
 
 html {
-  --bg-animation-color: $bg-animation-color-light;
+  --bg-animation-color: var(--ao-black);
   &.dark {
-    --bg-animation-color: $bg-animation-color-dark;
+    --bg-animation-color: var(--ao-white);
   }
   // View transition styles
   &::view-transition-old(*) {

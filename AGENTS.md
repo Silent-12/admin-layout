@@ -6,7 +6,7 @@
 
 # 当前状态
 
-- **阶段 3 已完成**：布局源码已从宿主模板迁移至本包（layouts/store/hooks/config/locales/styles），`install` 注入接口与 playground 均已就绪，`pnpm build` 与 `pnpm typecheck` 通过。剩余工作为阶段 4：宿主模板切换到本包并回归。
+- 布局源码与注入接口已抽离，宿主模板已接入本包。后续修复需在 playground 和宿主回归后发布新整数 tag，由宿主更新依赖。
 
 # 规则加载与优先级
 

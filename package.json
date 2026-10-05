@@ -20,7 +20,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "vite build",
+    "build": "vite build && node scripts/check-dist.mjs",
     "typecheck": "vue-tsc --noEmit",
     "release": "node scripts/release.mjs"
   },
