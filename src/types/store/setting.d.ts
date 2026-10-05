@@ -1,4 +1,4 @@
-import { MenuThemeEnum, SystemThemeEnum } from '../../enums'
+import { MenuThemeEnum, SystemThemeEnum } from '@/enums'
 
 /**
  * 系统主题样式

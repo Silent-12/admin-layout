@@ -13,6 +13,7 @@ declare const _default: import('vue').DefineComponent<{}, {}, {}, {}, {}, import
             readonly appendTo?: (string | HTMLElement) | undefined;
             readonly visible?: (boolean | null) | undefined;
             readonly style?: import('vue').StyleValue;
+            readonly className?: import('element-plus/es/utils/typescript').ClassValue;
             readonly open?: boolean | undefined;
             readonly transition?: string | undefined;
             readonly onFocus?: ((e: FocusEvent) => void) | undefined;
@@ -38,7 +39,6 @@ declare const _default: import('vue').DefineComponent<{}, {}, {}, {}, {}, import
             readonly virtualTriggering?: boolean | undefined;
             readonly virtualRef?: import('element-plus').Measurable | undefined;
             readonly loop?: boolean | undefined;
-            readonly className?: import('element-plus/es/utils/typescript').ClassValue;
             readonly enterable?: boolean | undefined;
             readonly pure?: boolean | undefined;
             readonly focusOnShow?: boolean | undefined;

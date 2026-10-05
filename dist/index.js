@@ -2681,6 +2681,7 @@ export {
   We as useAppStore,
   So as useAutoLayoutHeight,
   Ae as useCommon,
+  oo as useHeaderBar,
   ua as useLayoutHeight,
   J as useSettingStore,
   Ie as useTheme,
