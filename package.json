@@ -31,10 +31,10 @@
     "pinia-plugin-persistedstate": "^4.3.0",
     "vue": "^3.5.0",
     "vue-i18n": "^9.14.0",
-    "vue-router": "^4.5.1"
+    "vue-router": "^4.5.1",
+    "@ao/admin-components": "https://github.com/Silent-12/admin-components.git#v1"
   },
   "dependencies": {
-    "@ao/admin-components": "https://github.com/Silent-12/admin-components.git#v1",
     "nprogress": "^0.2.0"
   },
   "devDependencies": {
