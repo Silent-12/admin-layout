@@ -67,11 +67,13 @@
 
 ### 布局尺寸变量
 
-| 变量名                       | 值 / 来源           | 典型用途         |
-| ---------------------------- | ------------------- | ---------------- |
-| `--ao-header-height`         | 运行时写入          | 头部实测高度     |
-| `--ao-content-header-height` | 运行时写入          | 内容头部实测高度 |
-| `--ao-full-height`           | `app.scss` 组合计算 | 内容区全高       |
+| 变量名                        | 值 / 来源           | 典型用途         |
+| ----------------------------- | ------------------- | ---------------- |
+| `--ao-sidebar-width`          | `200px`             | 侧栏展开宽度     |
+| `--ao-sidebar-collapse-width` | `64px`              | 侧栏折叠宽度     |
+| `--ao-header-height`          | 运行时写入          | 头部实测高度     |
+| `--ao-content-header-height`  | 运行时写入          | 内容头部实测高度 |
+| `--ao-full-height`            | `app.scss` 组合计算 | 内容区全高       |
 
 `--ao-full-height` 在 `app.scss` 中由 `100vh` 减去运行时写入的头部高度组合而成；内容区上下留白由各容器自身内边距提供（如搜索栏 `10px`、表格卡片体 `10px`、`.page-content` `20px`），不设全局页面间距变量。脚本只负责把头部高度写入 `--ao-header-height` / `--ao-content-header-height`，不参与间距计算。
 

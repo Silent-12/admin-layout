@@ -35,7 +35,7 @@
  * - 刷新页面保持标签状态
  */
 import { defineStore } from 'pinia'
-// 引入持久化插件的类型扩充（persist 选项），运行时插件由宿主安装
+// 引入持久化插件的类型扩充（persist 选项），运行时插件由Admin模板安装
 import type {} from 'pinia-plugin-persistedstate'
 import { ref, computed } from 'vue'
 import { LocationQueryRaw, Router } from 'vue-router'

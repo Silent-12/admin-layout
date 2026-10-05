@@ -9,7 +9,10 @@ export default defineConfig({
     dts({
       include: ['src/**/*.ts', 'src/**/*.d.ts', 'src/**/*.vue'],
       outDir: 'dist',
-      tsconfigPath: './tsconfig.json'
+      tsconfigPath: './tsconfig.json',
+      // 复制纯 .d.ts 声明到产物：src/types/store 下的声明不参与编译输出，
+      // 不复制会导致 dist 内类型引用断链（公开类型 SidebarHeaderSlotProps 依赖 MenuThemeType）
+      copyDtsFiles: true
     })
   ],
   build: {

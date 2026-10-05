@@ -24,30 +24,22 @@
       height: 100%;
     }
   }
+  // 顶部区域容器：内容由Admin模板插槽提供，此处只保留盒模型与交互
+  // max-width 与展开态侧栏宽度同源，避免插槽内容撑开侧栏固有宽度
   .header {
     position: relative;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     width: 100%;
+    max-width: var(--ao-sidebar-width);
     height: 60px;
     overflow: hidden;
-    line-height: 60px;
     cursor: pointer;
-    .logo {
-      margin-left: 22px;
-    }
-    .system-name {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 58px;
-      box-sizing: border-box;
-      margin-left: 10px;
-      font-size: 18px;
-      line-height: 60px;
-      white-space: nowrap;
-    }
+  }
+  // 折叠态与折叠侧栏宽度同源
+  .menu-left-close .header {
+    max-width: var(--ao-sidebar-collapse-width);
   }
   .el-menu {
     box-sizing: border-box;
@@ -68,26 +60,19 @@
 @media only screen and (width <= 800px) {
   .layout-sidebar {
     width: 0;
+    // 关闭态侧栏整体位于画布外：清空顶部区域，避免插槽内容的 min-content 宽度
+    // 撑开 .menu-left 并溢出到视口左上角（覆盖头部栏）
+    .menu-left-close .header {
+      display: none;
+    }
     .header {
       height: 50px;
-      line-height: 50px;
     }
     .el-menu {
       height: calc(100vh - 60px);
     }
     .el-menu--collapse {
       width: 0;
-    }
-    // 折叠状态下的header样式
-    .menu-left-close .header {
-      .logo {
-        display: none;
-      }
-      .system-name {
-        left: 16px;
-        font-size: 0;
-        opacity: 0 !important;
-      }
     }
     .menu-model {
       position: fixed;

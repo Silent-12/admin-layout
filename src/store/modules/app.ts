@@ -14,7 +14,7 @@
  * - 替代全局事件总线，使用 Pinia 共享状态实现组件通信
  */
 import { defineStore } from 'pinia'
-// 引入持久化插件的类型扩充（persist 选项），运行时插件由宿主安装
+// 引入持久化插件的类型扩充（persist 选项），运行时插件由Admin模板安装
 import type {} from 'pinia-plugin-persistedstate'
 import { ref } from 'vue'
 

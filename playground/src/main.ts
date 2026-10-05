@@ -11,7 +11,7 @@ import '@ao/admin-components/styles.css'
 // 源码链接开发：底座样式直接引包内样式入口
 import '../../src/styles/index.scss'
 import 'element-plus/dist/index.css'
-// 宿主全局重置样式（重置 margin/padding 与美化滚动条）
+// Admin模板全局重置样式（重置 margin/padding 与美化滚动条）
 import './styles/reset.scss'
 import App from './App.vue'
 import PageA from './views/PageA.vue'
@@ -39,7 +39,7 @@ const router = createRouter({
   routes: [
     {
       path: '/',
-      component: () => import('@ao/admin-layout').then((m) => m.AppLayout),
+      component: () => import('./views/Layout.vue'),
       children: [
         { path: '', redirect: '/page-a' },
         { path: 'page-a', component: PageA, meta: { title: '页面 A', keepAlive: true } },
@@ -50,7 +50,7 @@ const router = createRouter({
 })
 app.use(router)
 
-// 模拟宿主菜单数据
+// 模拟Admin模板菜单数据
 const menuList: AppRouteRecord[] = [
   {
     path: '/page-a',
@@ -66,7 +66,7 @@ const menuList: AppRouteRecord[] = [
   }
 ] as unknown as AppRouteRecord[]
 
-// 语言偏好（模拟宿主持有）
+// 语言偏好（模拟Admin模板持有）
 const language = ref<string>('zh')
 
 app.use(ElementPlus, { locale: zhCn })

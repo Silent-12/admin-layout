@@ -57,6 +57,14 @@
   }
 }
 
+// 下拉触发器焦点环抑制：ElDropdown 会给触发器（头部语言切换、快速入口等）注入 tabindex=0，
+// 且 hover 展开时聚焦触发器（tooltip focus-on-target），触发器匹配 :focus-visible 后浏览器
+// 原生焦点环表现为按钮四周黑框。与头部其他不可聚焦的图标按钮观感保持一致，统一去除
+// （代价：键盘用户在此类触发器上无焦点指示，与 Admin模板既有表现一致）
+.el-dropdown .el-tooltip__trigger:focus-visible {
+  outline: none;
+}
+
 .ao-card,
 .ao-card-sm,
 .ao-card-xs {
@@ -108,7 +116,7 @@
 // AoForm 弹窗（组件包 ao-form-dialog 钩子）：整体高度上限为视口 90%，头部与底部操作区固定，
 // 超出部分由表单区域内部滚动；压缩头部与底部内边距，减少视觉空白，留更多高度给内容区；
 // 头部与底部各加 1px 细线，清晰划分头部、可滚动内容区与底部按钮区。
-// 选择器特异性高于 Element Plus 与宿主全局覆盖，不依赖样式引入顺序
+// 选择器特异性高于 Element Plus 与Admin模板全局覆盖，不依赖样式引入顺序
 .el-dialog.ao-form-dialog {
   display: flex;
   flex-direction: column;
@@ -158,6 +166,9 @@
 // 页面布局高度：内容区留白由各容器自身内边距提供，头部高度由脚本运行时写入
 // --ao-full-height 在此由 CSS 组合，脚本不参与间距计算
 :root {
+  // 侧栏宽度：展开态与折叠态在此统一声明，侧栏菜单与顶部区域共同引用
+  --ao-sidebar-width: 200px;
+  --ao-sidebar-collapse-width: 64px;
   --ao-header-height: 0px;
   --ao-content-header-height: 0px;
   --ao-full-height: calc(100vh - var(--ao-header-height) - var(--ao-content-header-height));
@@ -173,8 +184,8 @@
   }
 }
 
-// 页面路由视图根节点：盒模型由包内骨架自身保证，不依赖宿主 reset
-// （避免宿主未引入全局 reset 时，页面根节点内边距撑破视口全高，使 #app-main 出现多余滚动条）
+// 页面路由视图根节点：盒模型由包内骨架自身保证，不依赖Admin模板 reset
+// （避免Admin模板未引入全局 reset 时，页面根节点内边距撑破视口全高，使 #app-main 出现多余滚动条）
 .ao-page-view {
   box-sizing: border-box;
 }

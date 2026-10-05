@@ -8,7 +8,7 @@
         background: getMenuTheme.background
       }"
     >
-      <!-- Logo、系统名称 -->
+      <!-- 侧栏顶部区域：内容由Admin模板经 #sidebar-header 插槽提供，未传插槽时该区域留空 -->
       <div
         class="header"
         @click="navigateToHome"
@@ -16,17 +16,7 @@
           background: getMenuTheme.background
         }"
       >
-        <AoLogo class="logo" />
-
-        <p
-          class="system-name"
-          :style="{
-            color: getMenuTheme.systemNameColor,
-            opacity: !menuOpen ? 0 : 1
-          }"
-        >
-          {{ getSystemName() }}
-        </p>
+        <slot name="sidebar-header" :menu-open="menuOpen" :theme="getMenuTheme" />
       </div>
 
       <!-- 菜单内容 -->
@@ -65,18 +55,27 @@
 </template>
 
 <script setup lang="ts">
-import { AoLogo } from '@ao/admin-components'
   import { computed, ref, watch } from 'vue'
   import { ElMenu, ElScrollbar } from 'element-plus'
-    import { useSettingStore } from '../../store/modules/setting'
-    import { storeToRefs } from 'pinia'
+  import { useSettingStore } from '../../store/modules/setting'
+  import { storeToRefs } from 'pinia'
   import SidebarSubmenu from './widget/SidebarSubmenu.vue'
-  import { getMenuSource, getSystemName } from '../../install/context'
+  import { getMenuSource } from '../../install/context'
   import { useCommon } from '../../hooks/core/useCommon'
   import { useRoute, useRouter } from 'vue-router'
   import { useWindowSize, useTimeoutFn } from '@vueuse/core'
+  import type { SidebarHeaderSlotProps } from '../../types/layout'
 
   defineOptions({ name: 'AoSidebarMenu' })
+
+  /**
+   * 侧栏 header 插槽
+   * @description Admin模板经 AppLayout 透传后提供侧栏顶部区域内容，回传菜单折叠态与当前菜单主题；
+   * 未提供插槽内容时该区域留空，仅保留高度与点击跳转首页的行为。
+   */
+  defineSlots<{
+    'sidebar-header'?: (props: SidebarHeaderSlotProps) => any
+  }>()
 
   const MOBILE_BREAKPOINT = 800
   const ANIMATION_DELAY = 350
@@ -207,11 +206,11 @@ import { AoLogo } from '@ao/admin-components'
   .layout-sidebar {
     // 展开的宽度
     .el-menu:not(.el-menu--collapse) {
-      width: 200px;
+      width: var(--ao-sidebar-width);
     }
     // 折叠后宽度
     .el-menu--collapse {
-      width: 64px;
+      width: var(--ao-sidebar-collapse-width);
     }
   }
 </style>

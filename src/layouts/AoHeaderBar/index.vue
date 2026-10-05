@@ -106,10 +106,10 @@
 </template>
 
 <script setup lang="ts">
-import { AoIconButton, AoLogo, AoSvgIcon } from '@ao/admin-components'
-import AoFastEnter from "../AoFastEnter.vue"
-import AoNotification from "../AoNotification.vue"
-import AoWorkTab from "../AoWorkTab.vue"
+  import { AoIconButton, AoLogo, AoSvgIcon } from '@ao/admin-components'
+  import AoFastEnter from '../AoFastEnter.vue'
+  import AoNotification from '../AoNotification.vue'
+  import AoWorkTab from '../AoWorkTab.vue'
   import { onMounted, onUnmounted, ref } from 'vue'
   import { storeToRefs } from 'pinia'
   import { ElDropdown, ElDropdownItem, ElDropdownMenu } from 'element-plus'
@@ -118,14 +118,14 @@ import AoWorkTab from "../AoWorkTab.vue"
   import { useFullscreen, useWindowSize } from '@vueuse/core'
   import { LanguageEnum } from '../../enums'
   import { getLanguageRef, getLanguageChangeHandler } from '../../install/context'
-import { useSettingStore } from '../../store/modules/setting'
+  import { useSettingStore } from '../../store/modules/setting'
   import { useAppStore } from '../../store/modules/app'
 
-// 语言响应式引用与切换回调（宿主通过 install 注入）
-const language = getLanguageRef()
-const onLanguageChange = getLanguageChangeHandler()
-import { languageOptions } from '../../config/language'
-    import { themeAnimation } from '../../utils/ui/animation'
+  // 语言响应式引用与切换回调（Admin模板通过 install 注入）
+  const language = getLanguageRef()
+  const onLanguageChange = getLanguageChangeHandler()
+  import { languageOptions } from '../../config/language'
+  import { themeAnimation } from '../../utils/ui/animation'
   import { useCommon } from '../../hooks/core/useCommon'
   import { useHeaderBar } from '../../hooks/core/useHeaderBar'
   import AoUserMenu from './widget/AoUserMenu.vue'
@@ -444,6 +444,11 @@ import { languageOptions } from '../../config/language'
     border-radius: calc(var(--custom-radius) / 2 + 2px);
     @media (width <= 47.99rem) {
       display: none !important;
+    }
+    // 左侧图标与文字：显式 flex 居中，避免继承 header 的 60px 行高导致二者基线错位
+    &__left {
+      display: flex;
+      align-items: center;
     }
     // 搜索图标
     &__icon {

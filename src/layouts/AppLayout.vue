@@ -2,7 +2,12 @@
 <template>
   <div class="app-layout">
     <aside id="app-sidebar">
-      <AoSidebarMenu />
+      <AoSidebarMenu>
+        <!-- 转发Admin模板的侧栏顶部内容；未传入时该区域留空（包内无默认品牌内容） -->
+        <template #sidebar-header="scope">
+          <slot name="sidebar-header" v-bind="scope" />
+        </template>
+      </AoSidebarMenu>
     </aside>
 
     <main id="app-main">
@@ -21,11 +26,21 @@
 </template>
 
 <script setup lang="ts">
-import AoGlobalComponent from "./AoGlobalComponent.vue"
-import AoHeaderBar from "./AoHeaderBar/index.vue"
-import AoPageContent from "./AoPageContent.vue"
-import AoSidebarMenu from "./AoSidebarMenu/index.vue"
+  import AoGlobalComponent from './AoGlobalComponent.vue'
+  import AoHeaderBar from './AoHeaderBar/index.vue'
+  import AoPageContent from './AoPageContent.vue'
+  import AoSidebarMenu from './AoSidebarMenu/index.vue'
+  import type { SidebarHeaderSlotProps } from '../types/layout'
   defineOptions({ name: 'AppLayout' })
+
+  /**
+   * 侧栏 header 插槽
+   * @description 向Admin模板开放侧栏顶部区域的渲染权，插槽参数为菜单折叠态与当前菜单主题；
+   * 未传入时该区域留空，仅保留高度与点击跳转首页的行为。
+   */
+  defineSlots<{
+    'sidebar-header'?: (props: SidebarHeaderSlotProps) => any
+  }>()
 </script>
 
 <style lang="scss" scoped>

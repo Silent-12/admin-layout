@@ -81,7 +81,7 @@
 </template>
 
 <script lang="ts" setup>
-import { AoSvgIcon } from '@ao/admin-components'
+  import { AoSvgIcon } from '@ao/admin-components'
   import { computed, nextTick, onMounted, onUnmounted, ref, watch } from 'vue'
   import { ElDialog, ElInput, ElScrollbar } from 'element-plus'
   import { useAppStore } from '../store/modules/app'

@@ -7,7 +7,7 @@
  * - 使用 localStorage 存储，存储键：ao-search-history
  */
 import { defineStore } from 'pinia'
-// 引入持久化插件的类型扩充（persist 选项），运行时插件由宿主安装
+// 引入持久化插件的类型扩充（persist 选项），运行时插件由Admin模板安装
 import type {} from 'pinia-plugin-persistedstate'
 import { ref } from 'vue'
 import type { AppRouteRecord } from '../../types/router'

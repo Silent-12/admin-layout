@@ -3,7 +3,7 @@ import { version } from './version';
 import { default as AppLayout } from './layouts/AppLayout.vue';
 /**
  * 布局包插件
- * @description 安装时在控制台静默输出版本号，合并内置语言包并保存宿主注入的上下文。
+ * @description 安装时在控制台静默输出版本号，合并内置语言包并保存Admin模板注入的上下文。
  */
 export declare const AdminLayout: Plugin;
 export { version };
@@ -20,3 +20,4 @@ export { handleMenuJump, openExternalLink } from './utils/navigation/jump';
 export { getFirstMenuPath, findApplicationByPath } from './utils/navigation/route';
 export * from './install/context';
 export type { AdminLayoutOptions, MenuSource, LayoutUserInfo, LanguageChangeHandler } from './install/context';
+export type { SidebarHeaderSlotProps } from './types/layout';

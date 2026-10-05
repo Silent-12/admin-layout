@@ -1,12 +1,12 @@
 @charset "UTF-8";
 // reset.scss - 浏览器默认样式重置 + 自定义滚动条样式
 //
-// 本文件是宿主 admin-template-vue 的 src/assets/styles/reset.scss 的镜像，用于让 playground
-// 的样式级联与宿主一致；宿主调整该文件后需同步此处，勿在此新增 playground 专属样式。
+// 本文件是Admin模板 admin-template-vue 的 src/assets/styles/reset.scss 的镜像，用于让 playground
+// 的样式级联与Admin模板一致；Admin模板调整该文件后需同步此处，勿在此新增 playground 专属样式。
 //
 // 注意：下方的全局 `* { box-sizing: border-box }` 会覆盖页面根节点盒模型，使包内
 // src/styles/app.scss 的 `.ao-page-view { box-sizing: border-box }` 在 playground 中表现为
-// 冗余；验证该规则需在未引入本 reset 的环境中进行（包内骨架不依赖宿主 reset）。
+// 冗余；验证该规则需在未引入本 reset 的环境中进行（包内骨架不依赖Admin模板 reset）。
 
 /* ==================== 基础重置==================== */
 *,

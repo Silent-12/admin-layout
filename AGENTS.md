@@ -1,12 +1,12 @@
 # 项目定位
 
-- 本仓库是后台管理系统公共布局包 `@ao/admin-layout`，从宿主模板 `admin-template-vue` 抽离布局骨架：AppLayout（`#app-sidebar` / `#app-main` / `#app-header` / `#app-content` / `#app-global`）、侧栏菜单、头部栏、内容区路由视图、worktab、全局搜索、设置面板、通知等。业务数据（菜单、用户、路由注册、业务页面）由下游系统持有，本包只渲染注入的数据与内容区。
+- 本仓库是后台管理系统公共布局包 `@ao/admin-layout`，从Admin模板 `admin-template-vue` 抽离布局骨架：AppLayout（`#app-sidebar` / `#app-main` / `#app-header` / `#app-content` / `#app-global`）、侧栏菜单、头部栏、内容区路由视图、worktab、全局搜索、设置面板、通知等。业务数据（菜单、用户、路由注册、业务页面）由下游系统持有，本包只渲染注入的数据与内容区。
 - 技术栈：Vue 3、Vite（库模式）、TypeScript、Pinia、Element Plus、vue-i18n、SCSS；依赖公共组件包 `@ao/admin-components`（git tag 依赖）。
 - 使用 `pnpm`，Node.js 要求 `>=20.19.0`；开发与调试命令兼容 Windows PowerShell。
 
 # 当前状态
 
-- 布局源码与注入接口已抽离，宿主模板已接入本包。后续修复需在 playground 和宿主回归后发布新整数 tag，由宿主更新依赖。
+- 布局源码与注入接口已抽离，Admin模板已接入本包。后续修复需在 playground 和Admin模板回归后发布新整数 tag，由Admin模板更新依赖。
 
 # 规则加载与优先级
 
@@ -17,12 +17,13 @@
 
 # 核心约定
 
-- **包边界（最高优先级）**：布局组件内禁止依赖宿主业务资源（user/menu 业务 store、api、views 业务页面、locales、全局 router 单例）；宿主数据与能力通过 `install` 注入（`i18n`、`router`、`menuSource`、`userInfo`、`onLogout`、`config`）。下游只允许从包入口 `@ao/admin-layout` 导入，禁止深引 `src` 内部路径。
-- **UI 状态 store 三件套随包走**：`setting`、`app`、`worktab`；`worktab` 由宿主路由守卫写入，包导出 `useWorktabStore`。禁止在包内定义宿主业务 store。
-- **DOM/CSS 契约内聚**：布局锚点 ID（`#app-main` 等）与 `--ao-*` CSS 变量的生产消费都在本包内；锚点与变量名是 admin-components 滚动能力及宿主页面的隐式契约，修改属于破坏性变更。
+- **包边界（最高优先级）**：布局组件内禁止依赖Admin模板业务资源（user/menu 业务 store、api、views 业务页面、locales、全局 router 单例）；Admin模板数据与能力通过 `install` 注入（`i18n`、`router`、`menuSource`、`userInfo`、`onLogout`、`config`）。下游只允许从包入口 `@ao/admin-layout` 导入，禁止深引 `src` 内部路径。
+- **UI 状态 store 三件套随包走**：`setting`、`app`、`worktab`；`worktab` 由Admin模板路由守卫写入，包导出 `useWorktabStore`。禁止在包内定义Admin模板业务 store。
+- **DOM/CSS 契约内聚**：布局锚点 ID（`#app-main` 等）与 `--ao-*` CSS 变量的生产消费都在本包内；锚点与变量名是 admin-components 滚动能力及Admin模板页面的隐式契约，修改属于破坏性变更。
 - 依赖纪律：`vue`、`element-plus`、`pinia`、`vue-i18n`、`@vueuse/core`、`pinia-plugin-persistedstate` 为 peerDependencies；`@ao/admin-components` 为 git tag 依赖。
-- 包内置 zh/en 语言包（布局框架文案），由 `install` 合并进宿主 vue-i18n 实例；宿主业务文案（菜单标题等）不属于本包。
-- 样式自带布局底座（theme/dark/app/router-transition/theme-transition/mixin），宿主在业务样式前引入；颜色一律引用 CSS 变量，兼容暗色模式。
+- 代码规范：ESLint（扁平配置 `eslint.config.mjs`）与 Prettier（`.prettierrc`）与 admin-template-vue 同套规则，根目录配置同时覆盖 `src/` 与 `playground/`；提交前跑 `pnpm run lint` 与 `pnpm run lint:prettier`。
+- 包内置 zh/en 语言包（布局框架文案），由 `install` 合并进Admin模板 vue-i18n 实例；Admin模板业务文案（菜单标题等）不属于本包。
+- 样式自带布局底座（theme/dark/app/router-transition/theme-transition/mixin），Admin模板在业务样式前引入；颜色一律引用 CSS 变量，兼容暗色模式。
 - 版本与发版：整数版本自增（v1、v2…），统一 `pnpm run release`；`dist/` 提交进仓库；包安装后控制台输出 `[ao-admin-layout] v<版本号>`。
 
 # 按需加载索引

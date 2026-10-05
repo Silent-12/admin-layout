@@ -2,7 +2,7 @@ import { Ref } from 'vue';
 import { Router } from 'vue-router';
 import { Composer, I18n } from 'vue-i18n';
 import { AppRouteRecord } from '../types/router';
-/** 宿主用户信息的最小展示结构 */
+/** Admin模板用户信息的最小展示结构 */
 export interface LayoutUserInfo {
     /** 用户名 / 昵称 */
     username?: string;
@@ -11,9 +11,9 @@ export interface LayoutUserInfo {
     /** 其他展示字段 */
     [key: string]: unknown;
 }
-/** 语言切换回调：宿主负责同步 i18n locale 与持久化 */
+/** 语言切换回调：Admin模板负责同步 i18n locale 与持久化 */
 export type LanguageChangeHandler = (lang: string) => void;
-/** 菜单数据来源：宿主路由装配完成后注入响应式数据 */
+/** 菜单数据来源：Admin模板路由装配完成后注入响应式数据 */
 export interface MenuSource {
     /** 侧栏菜单树 */
     menuList: AppRouteRecord[];
@@ -26,40 +26,40 @@ export interface MenuSource {
 }
 /** 布局包安装选项 */
 export interface AdminLayoutOptions {
-    /** 宿主 vue-i18n 实例；传入后包内置语言包会合并进去 */
+    /** Admin模板 vue-i18n 实例；传入后包内置语言包会合并进去 */
     i18n?: I18n | {
         global: Composer;
     };
-    /** 宿主 vue-router 实例，用于菜单跳转 / worktab 导航 / 页面标题 */
+    /** Admin模板 vue-router 实例，用于菜单跳转 / worktab 导航 / 页面标题 */
     router?: Router;
-    /** 菜单数据（响应式引用或 getter），替代宿主 menu store */
+    /** 菜单数据（响应式引用或 getter），替代Admin模板 menu store */
     menuSource?: () => MenuSource;
-    /** 用户信息（只读展示），替代宿主 user store */
+    /** 用户信息（只读展示），替代Admin模板 user store */
     userInfo?: () => LayoutUserInfo | undefined;
-    /** 语言响应式引用（宿主传入 store 中的 ref），替代宿主 user store 的 language */
+    /** 语言响应式引用（Admin模板传入 store 中的 ref），替代Admin模板 user store 的 language */
     language?: Ref<string>;
-    /** 语言切换回调（替代宿主 user store 的 setLanguage） */
+    /** 语言切换回调（替代Admin模板 user store 的 setLanguage） */
     onLanguageChange?: LanguageChangeHandler;
-    /** 登出回调（替代宿主 user store 的 logOut 及其路由守卫耦合） */
+    /** 登出回调（替代Admin模板 user store 的 logOut 及其路由守卫耦合） */
     onLogout?: () => void | Promise<void>;
     /** 参数化配置 */
     config?: {
-        /** 系统名称，用于侧栏标题与页面标题 */
+        /** 系统名称，用于浏览器页面标题 */
         systemName?: string;
     };
 }
 /**
- * @description 安装时保存宿主注入的上下文。
+ * @description 安装时保存Admin模板注入的上下文。
  * @param options 安装选项。
  */
 export declare const setLayoutContext: (options: AdminLayoutOptions) => void;
 /**
- * @description 获取宿主注入的 router（菜单跳转、worktab 导航），未注入时返回 undefined。
+ * @description 获取Admin模板注入的 router（菜单跳转、worktab 导航），未注入时返回 undefined。
  * @return vue-router 实例。
  */
 export declare const getContextRouter: () => Router | undefined;
 /**
- * @description 获取宿主注入的 i18n（菜单标题翻译）。
+ * @description 获取Admin模板注入的 i18n（菜单标题翻译）。
  * @return vue-i18n 实例的 global composer。
  */
 export declare const getContextI18n: () => {
@@ -86,7 +86,7 @@ export declare const getLanguageRef: () => Ref<string>;
  */
 export declare const getLanguageChangeHandler: () => LanguageChangeHandler | undefined;
 /**
- * @description 执行宿主登出回调，未注入时仅告警。
+ * @description 执行Admin模板登出回调，未注入时仅告警。
  */
 export declare const logout: () => void;
 /**

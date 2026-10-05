@@ -39,17 +39,16 @@
 </template>
 
 <script setup lang="ts">
-import { AoSvgIcon } from '@ao/admin-components'
+  import { AoSvgIcon } from '@ao/admin-components'
   import { computed, ref } from 'vue'
-  import { storeToRefs } from 'pinia'
   import { ElPopover } from 'element-plus'
   import { useI18n } from 'vue-i18n'
   import { ElMessage, ElMessageBox } from 'element-plus'
   import { getUserInfo as getLayoutUserInfo, logout } from '../../../install/context'
-  
+
   defineOptions({ name: 'AoUserMenu' })
 
-  // 用户信息（宿主注入，只读展示）
+  // 用户信息（Admin模板注入，只读展示）
   const userInfo = computed(() => getLayoutUserInfo())
 
   const { t } = useI18n()

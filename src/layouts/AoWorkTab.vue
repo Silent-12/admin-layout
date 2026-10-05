@@ -50,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import { AoSvgIcon } from '@ao/admin-components'
+  import { AoSvgIcon } from '@ao/admin-components'
   import { computed, onMounted, ref, watch, nextTick, onUnmounted } from 'vue'
   import { LocationQueryRaw, useRoute, useRouter } from 'vue-router'
   import { useI18n } from 'vue-i18n'

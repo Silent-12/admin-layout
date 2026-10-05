@@ -3,7 +3,7 @@
 :root {
   /* 基础色 */
   --ao-color: #ffffff;
-  /* 主题色来源：默认跟随 Element Plus 主色，宿主可在自己的全局样式中覆盖；不随主题变化，仅 :root 定义 */
+  /* 主题色来源：默认跟随 Element Plus 主色，Admin模板可在自己的全局样式中覆盖；不随主题变化，仅 :root 定义 */
   --main-color: var(--el-color-primary);
   --theme-color: var(--main-color);
   /* 全局圆角基数，布局与组件包的圆角计算均基于它；不随主题变化，仅 :root 定义 */

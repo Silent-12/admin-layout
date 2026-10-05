@@ -1,1 +1,3 @@
 * text=auto eol=lf
+# 构建产物：标记为生成文件，GitHub 折叠其 diff 并从语言统计中排除
+dist/** linguist-generated=true -diff

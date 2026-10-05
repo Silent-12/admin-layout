@@ -8,7 +8,7 @@
 
 ```
 src/
-├─ layouts/     # 布局骨架：AppLayout.vue（原宿主 views/index/index.vue）、AoSidebarMenu/、AoHeaderBar/、
+├─ layouts/     # 布局骨架：AppLayout.vue（原Admin模板 views/index/index.vue）、AoSidebarMenu/、AoHeaderBar/、
 │               # AoPageContent.vue、AoGlobalComponent.vue、AoGlobalSearch.vue、AoNotification.vue、
 │               # AoSettingsPanel/、AoWorkTab.vue、AoFastEnter.vue
 ├─ store/       # UI 状态 store：setting.ts、app.ts、worktab.ts（随包走）
@@ -18,7 +18,7 @@ src/
 ├─ styles/      # theme.scss、dark.scss、app.scss 布局骨架段（--ao-* 变量）、router-transition、theme-transition、mixin.scss
 ├─ directives/  # ripple（AoNotification 使用）
 └─ index.ts     # install(app, options) 注入接口 + 版本号输出
-playground/    # 预览应用（模拟宿主注入）
+playground/    # 预览应用（模拟Admin模板注入）
 scripts/       # release.mjs 发版脚本
 dist/          # 构建产物（提交进仓库）
 ```
@@ -31,8 +31,8 @@ dist/          # 构建产物（提交进仓库）
 
 - **DOM/CSS 契约内聚**：`#app-sidebar` / `#app-main` / `#app-header` / `#app-content` / `#app-global` 锚点、`--ao-header-height` 等 CSS 变量的生产与消费都必须在本包内完成；修改锚点 ID 或变量名属于破坏性变更，需同步 README 契约并升版本。
 
-- 布局与业务解耦约定：菜单树、用户信息、业务页面组件属于宿主；本包只渲染注入的数据与 `<RouterView>` 内容区。`RoutePath.LayoutComponent` 字符串约定与宿主路由装配保持一致，修改需升版本。
+- 布局与业务解耦约定：菜单树、用户信息、业务页面组件属于Admin模板；本包只渲染注入的数据与 `<RouterView>` 内容区。`RoutePath.LayoutComponent` 字符串约定与Admin模板路由装配保持一致，修改需升版本。
 
 ## playground 约定
 
-- playground 模拟宿主注入全量选项，验证矩阵覆盖：登录后布局、菜单折叠、语言/主题切换、worktab 增删固定、全局搜索、设置面板、通知面板、快速入口、iframe 页与全屏页。
+- playground 模拟Admin模板注入全量选项，验证矩阵覆盖：登录后布局、菜单折叠、语言/主题切换、worktab 增删固定、全局搜索、设置面板、通知面板、快速入口、iframe 页与全屏页。

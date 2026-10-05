@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { AoSvgIcon } from '@ao/admin-components'
+  import { AoSvgIcon } from '@ao/admin-components'
   import { computed } from 'vue'
   import { getMenuSource } from '../install/context'
   import { useRouter } from 'vue-router'

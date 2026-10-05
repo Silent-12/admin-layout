@@ -1,6 +1,6 @@
 # @ao/admin-layout
 
-后台管理系统公共布局包：AppLayout 布局骨架（`#app-sidebar` / `#app-main` / `#app-header` / `#app-content` / `#app-global`）、侧栏菜单、头部栏、内容区路由视图、worktab 多标签、全局搜索、设置面板、通知、快速入口，以及亮/暗主题样式底座。业务数据由宿主持有，本包只渲染注入的数据与内容区。
+后台管理系统公共布局包：AppLayout 布局骨架（`#app-sidebar` / `#app-main` / `#app-header` / `#app-content` / `#app-global`）、侧栏菜单、头部栏、内容区路由视图、worktab 多标签、全局搜索、设置面板、通知、快速入口，以及亮/暗主题样式底座。业务数据由Admin模板持有，本包只渲染注入的数据与内容区。
 
 依赖公共组件包 `@ao/admin-components`。
 
@@ -17,9 +17,9 @@ import { AdminLayout } from '@ao/admin-layout'
 import '@ao/admin-layout/styles.css'
 
 app.use(AdminLayout, {
-  i18n,                     // 宿主 vue-i18n 实例，包内置语言包会合并进去
-  router,                   // 宿主 vue-router 实例
-  menuSource: () => ({      // 菜单数据（宿主路由装配完成后提供）
+  i18n,                     // Admin模板 vue-i18n 实例，包内置语言包会合并进去
+  router,                   // Admin模板 vue-router 实例
+  menuSource: () => ({      // 菜单数据（Admin模板路由装配完成后提供）
     menuList: menuStore.menuList,
     applicationList: menuStore.applicationList,
     currentApplication: menuStore.currentApplication,
@@ -38,8 +38,11 @@ app.use(AdminLayout, {
 ## 契约约定
 
 - 下游只允许从包入口导入；`install` 注入接口（`AdminLayoutOptions`）与布局锚点 ID、`--ao-*` CSS 变量是公开契约，修改属于破坏性变更。
-- 包内 UI 状态 store 仅 `setting` / `app` / `worktab`；`worktab` 由宿主路由守卫写入（包导出 `useWorktabStore`）。
-- 菜单数据、用户信息、业务页面、登录页、路由守卫均属于宿主。
+- `AppLayout` 提供 `#sidebar-header` 作用域插槽（参数 `menuOpen`、`theme`，类型 `SidebarHeaderSlotProps`），侧栏顶部区域内容由Admin模板提供；未传插槽时该区域留空。侧栏头部高度固定 60px（移动端 50px），自定义内容需在该高度内布局。
+- `config.systemName` 仅用于浏览器页面标题（`setPageTitle`），不参与侧栏渲染。
+- 侧栏宽度由 `--ao-sidebar-width`（展开）与 `--ao-sidebar-collapse-width`（折叠）统一控制，侧栏菜单与顶部区域共同引用；Admin模板可覆盖这两个变量调整侧栏尺寸。
+- 包内 UI 状态 store 仅 `setting` / `app` / `worktab`；`worktab` 由Admin模板路由守卫写入（包导出 `useWorktabStore`）。
+- 菜单数据、用户信息、业务页面、登录页、路由守卫均属于Admin模板。
 
 ## 升级
 
@@ -55,7 +58,9 @@ pnpm install
 
 ```bash
 pnpm install
-pnpm build        # 库模式构建，产物提交进仓库
-pnpm typecheck    # vue-tsc 类型检查
-cd playground && pnpm dev   # 布局预览（模拟宿主注入）
+pnpm build          # 库模式构建，产物提交进仓库
+pnpm typecheck      # vue-tsc 类型检查
+pnpm lint           # ESLint 静态检查（与 admin-template-vue 同套规则）
+pnpm lint:prettier  # Prettier 格式化源码
+cd playground && pnpm dev   # 布局预览（模拟Admin模板注入）
 ```

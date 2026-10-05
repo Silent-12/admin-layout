@@ -2,13 +2,13 @@
 
 [返回主索引](../../AGENTS.md)。本文中的源码路径均相对仓库根目录。
 
-- 包自带布局样式底座（迁移后位于 `src/styles/`）：`theme.scss`（亮色 CSS 变量）、`dark.scss`（暗色覆盖，含 Element Plus 官方暗色导入）、`app.scss`（`--ao-header-height` 等 `--ao-*` 布局变量）、`router-transition.scss`（页面切换动画）、`theme-transition.scss`（View Transition 圆形扩散）、`mixin.scss`（包内混入，替代宿主 `@styles/mixin.scss`）。
+- 包自带布局样式底座（迁移后位于 `src/styles/`）：`theme.scss`（亮色 CSS 变量）、`dark.scss`（暗色覆盖，含 Element Plus 官方暗色导入）、`app.scss`（`--ao-header-height` 等 `--ao-*` 布局变量）、`router-transition.scss`（页面切换动画）、`theme-transition.scss`（View Transition 圆形扩散）、`mixin.scss`（包内混入，替代Admin模板 `@styles/mixin.scss`）。
 
-- 样式入口由包统一导出，宿主在业务样式**之前**引入；包内组件样式写在 SFC `<style scoped lang="scss">` 或同名 `style.scss` / `theme.scss`。
+- 样式入口由包统一导出，Admin模板在业务样式**之前**引入；包内组件样式写在 SFC `<style scoped lang="scss">` 或同名 `style.scss` / `theme.scss`。
 
-- 包内布局骨架类（`.ao-page-view`、`.ao-full-height` 等）的盒模型与高度由包自身声明保证，不依赖宿主 reset：宿主未引入全局 `* { box-sizing: border-box }` 时骨架仍须表现正确。这类规则属于骨架自洽，不适用「reset 与 Element Plus 基础样式由宿主承担」（见 `src/styles/index.scss`）。playground 引入的宿主 reset 镜像会覆盖同名效果，验证此类规则需在未引入 reset 的环境中进行。
+- 包内布局骨架类（`.ao-page-view`、`.ao-full-height` 等）的盒模型与高度由包自身声明保证，不依赖Admin模板 reset：Admin模板未引入全局 `* { box-sizing: border-box }` 时骨架仍须表现正确。这类规则属于骨架自洽，不适用「reset 与 Element Plus 基础样式由Admin模板承担」（见 `src/styles/index.scss`）。playground 引入的Admin模板 reset 镜像会覆盖同名效果，验证此类规则需在未引入 reset 的环境中进行。
 
-- 样式中的颜色必须引用 CSS 变量（`:root` 亮色与 `.dark` 暗色成对定义），变量清单见 [CSS 变量速查](../references/css-variables.md)；新增变量定义在本包 `theme.scss` 的 `:root` 与 `.dark` 中成对新增，并同时评估对宿主业务页面的影响（该变量会随包下发到所有下游系统）。
+- 样式中的颜色必须引用 CSS 变量（`:root` 亮色与 `.dark` 暗色成对定义），变量清单见 [CSS 变量速查](../references/css-variables.md)；新增变量定义在本包 `theme.scss` 的 `:root` 与 `.dark` 中成对新增，并同时评估对Admin模板业务页面的影响（该变量会随包下发到所有下游系统）。
 
 - Vue 组件 `<style scoped>` 的 class 命名：一个顶层模块 class 作为作用域入口 + 内部简短语义命名（`left`/`right`/`header`/`body`/`item`/`title` 等）；仅跨组件复用、Element Plus 深度覆盖等场景使用完整 BEM。
 
@@ -18,7 +18,7 @@
 
 ## 深色模式适配强制检查规则
 
-宿主通过切换 `<html>` 的 `class="dark"` 切换主题。**新增或修改任何 `.vue` / `.scss` 文件时必须检查：**
+Admin模板通过切换 `<html>` 的 `class="dark"` 切换主题。**新增或修改任何 `.vue` / `.scss` 文件时必须检查：**
 
 1. 扫描 `<style>` 块中的裸色值（`#fff`、`#000`、`rgba(0,0,0,...)` 等）。
 2. `transparent`、`rgba(0,0,0,0)` 等无视觉影响的颜色可豁免；确需固定不随主题变化的颜色必须注释原因。

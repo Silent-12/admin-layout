@@ -1,8 +1,8 @@
 /**
  * 布局包样式入口
  *
- * 宿主在业务样式之前引入：提供亮/暗色 CSS 变量底座、Element Plus 暗色适配、
- * 布局骨架类（--ao-* 变量）与页面切换动画。reset 与 Element Plus 基础样式由宿主承担。
+ * Admin模板在业务样式之前引入：提供亮/暗色 CSS 变量底座、Element Plus 暗色适配、
+ * 布局骨架类（--ao-* 变量）与页面切换动画。reset 与 Element Plus 基础样式由Admin模板承担。
  */
 
 // 亮色主题变量（:root）

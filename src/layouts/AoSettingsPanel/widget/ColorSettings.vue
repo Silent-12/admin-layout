@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { AoSvgIcon } from '@ao/admin-components'
+  import { AoSvgIcon } from '@ao/admin-components'
   import SectionTitle from './SectionTitle.vue'
   import { useSettingStore } from '../../../store/modules/setting'
   import { useSettingsConfig } from '../composables/useSettingsConfig'
