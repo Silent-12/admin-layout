@@ -1,0 +1,79 @@
+{
+  "setting": {
+    "theme": {
+      "title": "主题风格",
+      "list": [
+        "浅色",
+        "深色",
+        "系统"
+      ]
+    },
+    "menu": {
+      "title": "菜单风格"
+    },
+    "color": {
+      "title": "系统主题色"
+    },
+    "basics": {
+      "title": "基础配置",
+      "list": {
+        "multiTab": "开启多标签栏",
+        "accordion": "侧边栏自动收起",
+        "collapseSidebar": "显示折叠侧边栏按钮",
+        "fastEnter": "显示快速入口",
+        "language": "显示多语言选择",
+        "notification": "显示通知入口"
+      }
+    },
+    "actions": {
+      "resetConfig": "重置配置",
+      "resetFailed": "重置失败，请刷新页面后重试"
+    }
+  },
+  "worktab": {
+    "btn": {
+      "refresh": "刷新",
+      "fixed": "固定当前标签",
+      "unfixed": "取消固定",
+      "closeLeft": "关闭左侧",
+      "closeRight": "关闭右侧",
+      "closeOther": "关闭其他",
+      "closeAll": "关闭全部"
+    }
+  },
+  "notice": {
+    "title": "通知",
+    "btnRead": "标为已读",
+    "bar": [
+      "通知",
+      "消息",
+      "代办"
+    ],
+    "text": [
+      "暂无"
+    ],
+    "viewAll": "查看全部"
+  },
+  "search": {
+    "placeholder": "搜索页面",
+    "historyTitle": "搜索历史",
+    "switchKeydown": "切换",
+    "selectKeydown": "选择",
+    "exitKeydown": "关闭"
+  },
+  "topBar": {
+    "search": {
+      "title": "搜索"
+    },
+    "user": {
+      "userCenter": "个人中心",
+      "logout": "退出登录"
+    }
+  },
+  "common": {
+    "tips": "提示",
+    "cancel": "取消",
+    "confirm": "确定",
+    "logOutTips": "您是否要退出登录?"
+  }
+}

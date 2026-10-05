@@ -1,0 +1,19 @@
+/**
+ * 布局包样式入口
+ *
+ * 宿主在业务样式之前引入：提供亮/暗色 CSS 变量底座、Element Plus 暗色适配、
+ * 布局骨架类（--ao-* 变量）与页面切换动画。reset 与 Element Plus 基础样式由宿主承担。
+ */
+
+// 亮色主题变量（:root）
+@use './theme.scss';
+// Element Plus 亮色变量覆盖
+@use './el-light.scss';
+// 布局骨架类与通用布局样式
+@use './app.scss';
+// 暗色主题变量（.dark）
+@use './dark.scss';
+// 页面切换动画
+@use './router-transition.scss';
+// 主题切换过渡动画
+@use './theme-transition.scss';

@@ -1,0 +1,88 @@
+import { MenuThemeType } from '../../types/store/setting';
+import { SystemThemeEnum, MenuThemeEnum } from '../../enums';
+/**
+ * 系统设置状态管理
+ * 管理应用的菜单、主题、界面显示等各项设置
+ */
+export declare const useSettingStore: import('pinia').StoreDefinition<"settingStore", Pick<{
+    systemThemeType: import('vue').Ref<SystemThemeEnum, SystemThemeEnum>;
+    systemThemeMode: import('vue').Ref<SystemThemeEnum, SystemThemeEnum>;
+    menuThemeType: import('vue').Ref<MenuThemeEnum, MenuThemeEnum>;
+    systemThemeColor: import('vue').Ref<string, string>;
+    uniqueOpened: import('vue').Ref<boolean, boolean>;
+    showMenuButton: import('vue').Ref<boolean, boolean>;
+    showFastEnter: import('vue').Ref<boolean, boolean>;
+    showWorkTab: import('vue').Ref<boolean, boolean>;
+    showLanguage: import('vue').Ref<boolean, boolean>;
+    showNotification: import('vue').Ref<boolean, boolean>;
+    showSettingGuide: import('vue').Ref<boolean, boolean>;
+    menuOpen: import('vue').Ref<boolean, boolean>;
+    refresh: import('vue').Ref<boolean, boolean>;
+    getMenuTheme: import('vue').ComputedRef<MenuThemeType>;
+    isDark: import('vue').ComputedRef<boolean>;
+    setGlopTheme: (theme: SystemThemeEnum, themeMode: SystemThemeEnum) => void;
+    switchMenuStyles: (theme: MenuThemeEnum) => void;
+    setElementTheme: (theme: string) => void;
+    setUniqueOpened: () => void;
+    setButton: () => void;
+    setFastEnter: () => void;
+    setWorkTab: (show: boolean) => void;
+    setLanguage: () => void;
+    setNotification: () => void;
+    setMenuOpen: (open: boolean) => void;
+    reload: () => void;
+}, "systemThemeType" | "systemThemeMode" | "menuThemeType" | "systemThemeColor" | "uniqueOpened" | "showMenuButton" | "showFastEnter" | "showWorkTab" | "showLanguage" | "showNotification" | "showSettingGuide" | "menuOpen" | "refresh">, Pick<{
+    systemThemeType: import('vue').Ref<SystemThemeEnum, SystemThemeEnum>;
+    systemThemeMode: import('vue').Ref<SystemThemeEnum, SystemThemeEnum>;
+    menuThemeType: import('vue').Ref<MenuThemeEnum, MenuThemeEnum>;
+    systemThemeColor: import('vue').Ref<string, string>;
+    uniqueOpened: import('vue').Ref<boolean, boolean>;
+    showMenuButton: import('vue').Ref<boolean, boolean>;
+    showFastEnter: import('vue').Ref<boolean, boolean>;
+    showWorkTab: import('vue').Ref<boolean, boolean>;
+    showLanguage: import('vue').Ref<boolean, boolean>;
+    showNotification: import('vue').Ref<boolean, boolean>;
+    showSettingGuide: import('vue').Ref<boolean, boolean>;
+    menuOpen: import('vue').Ref<boolean, boolean>;
+    refresh: import('vue').Ref<boolean, boolean>;
+    getMenuTheme: import('vue').ComputedRef<MenuThemeType>;
+    isDark: import('vue').ComputedRef<boolean>;
+    setGlopTheme: (theme: SystemThemeEnum, themeMode: SystemThemeEnum) => void;
+    switchMenuStyles: (theme: MenuThemeEnum) => void;
+    setElementTheme: (theme: string) => void;
+    setUniqueOpened: () => void;
+    setButton: () => void;
+    setFastEnter: () => void;
+    setWorkTab: (show: boolean) => void;
+    setLanguage: () => void;
+    setNotification: () => void;
+    setMenuOpen: (open: boolean) => void;
+    reload: () => void;
+}, "getMenuTheme" | "isDark">, Pick<{
+    systemThemeType: import('vue').Ref<SystemThemeEnum, SystemThemeEnum>;
+    systemThemeMode: import('vue').Ref<SystemThemeEnum, SystemThemeEnum>;
+    menuThemeType: import('vue').Ref<MenuThemeEnum, MenuThemeEnum>;
+    systemThemeColor: import('vue').Ref<string, string>;
+    uniqueOpened: import('vue').Ref<boolean, boolean>;
+    showMenuButton: import('vue').Ref<boolean, boolean>;
+    showFastEnter: import('vue').Ref<boolean, boolean>;
+    showWorkTab: import('vue').Ref<boolean, boolean>;
+    showLanguage: import('vue').Ref<boolean, boolean>;
+    showNotification: import('vue').Ref<boolean, boolean>;
+    showSettingGuide: import('vue').Ref<boolean, boolean>;
+    menuOpen: import('vue').Ref<boolean, boolean>;
+    refresh: import('vue').Ref<boolean, boolean>;
+    getMenuTheme: import('vue').ComputedRef<MenuThemeType>;
+    isDark: import('vue').ComputedRef<boolean>;
+    setGlopTheme: (theme: SystemThemeEnum, themeMode: SystemThemeEnum) => void;
+    switchMenuStyles: (theme: MenuThemeEnum) => void;
+    setElementTheme: (theme: string) => void;
+    setUniqueOpened: () => void;
+    setButton: () => void;
+    setFastEnter: () => void;
+    setWorkTab: (show: boolean) => void;
+    setLanguage: () => void;
+    setNotification: () => void;
+    setMenuOpen: (open: boolean) => void;
+    reload: () => void;
+}, "setGlopTheme" | "switchMenuStyles" | "setElementTheme" | "setUniqueOpened" | "setButton" | "setFastEnter" | "setWorkTab" | "setLanguage" | "setNotification" | "setMenuOpen" | "reload">>;

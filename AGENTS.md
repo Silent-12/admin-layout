@@ -6,7 +6,7 @@
 
 # 当前状态
 
-- **初始化阶段**：AGENTS.md 与规则体系已就绪；布局源码迁移（阶段 3）尚未开始，迁移按 [目录与组件结构](.agents/rules/module-structure.md) 的目标结构执行。迁移完成前，构建与 playground 相关命令暂不可用。
+- **阶段 3 已完成**：布局源码已从宿主模板迁移至本包（layouts/store/hooks/config/locales/styles），`install` 注入接口与 playground 均已就绪，`pnpm build` 与 `pnpm typecheck` 通过。剩余工作为阶段 4：宿主模板切换到本包并回归。
 
 # 规则加载与优先级
 

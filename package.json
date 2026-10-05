@@ -1,0 +1,65 @@
+{
+  "name": "@ao/admin-layout",
+  "version": "0.0.0",
+  "type": "module",
+  "description": "\u540e\u53f0\u7ba1\u7406\u7cfb\u7edf\u516c\u5171\u5e03\u5c40\u5305\uff1a\u5e03\u5c40\u9aa8\u67b6\u3001\u4fa7\u680f\u3001\u5934\u90e8\u3001worktab\u3001\u5168\u5c40\u5f39\u5c42\u4e0e\u4e3b\u9898\u5e95\u5ea7",
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles.css": "./dist/index.css",
+    "./locales/*": "./src/locales/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "vite build",
+    "typecheck": "vue-tsc --noEmit",
+    "release": "node scripts/release.mjs"
+  },
+  "peerDependencies": {
+    "@vueuse/core": "^13.9.0",
+    "element-plus": "^2.14.3",
+    "pinia": "^3.0.3",
+    "pinia-plugin-persistedstate": "^4.3.0",
+    "vue": "^3.5.0",
+    "vue-i18n": "^9.14.0",
+    "vue-router": "^4.5.1"
+  },
+  "dependencies": {
+    "@ao/admin-components": "https://github.com/Silent-12/admin-components.git#v1",
+    "nprogress": "^0.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.5",
+    "@types/nprogress": "^0.2.3",
+    "@vitejs/plugin-vue": "^6.0.1",
+    "@vueuse/core": "^13.9.0",
+    "element-plus": "^2.14.3",
+    "pinia": "^3.0.3",
+    "pinia-plugin-persistedstate": "^4.3.0",
+    "sass": "^1.81.0",
+    "typescript": "~5.6.3",
+    "vite": "^7.1.5",
+    "vite-plugin-dts": "^4.5.4",
+    "vue": "^3.5.21",
+    "vue-i18n": "^9.14.0",
+    "vue-router": "^4.5.1",
+    "vue-tsc": "~2.1.6",
+    "@element-plus/icons-vue": "^2.3.2"
+  },
+  "publishConfig": {
+    "registry": "https://registry.example.com"
+  },
+  "engines": {
+    "node": ">=20.19.0",
+    "pnpm": ">=8.8.0"
+  }
+}

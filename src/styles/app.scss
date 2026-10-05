@@ -1,0 +1,210 @@
+// app.scss - 应用全局业务样式（顶部进度条、卡片容器、徽章、加载修复、语言切换等）
+// 全局样式
+// 顶部进度条颜色
+#nprogress .bar {
+  z-index: 2400;
+  background-color: color-mix(in srgb, var(--theme-color) 70%, var(--ao-white));
+}
+
+#nprogress .peg {
+  box-shadow:
+    0 0 10px var(--theme-color),
+    0 0 5px var(--theme-color) !important;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: var(--theme-color) !important;
+  border-left-color: var(--theme-color) !important;
+}
+
+// 处理移动端组件兼容性
+@media screen and (max-width: 640px) {
+  * {
+    cursor: default !important;
+  }
+}
+
+#noop {
+  display: none;
+}
+
+// 语言切换选中样式
+.langDropDownStyle {
+  // 选中项背景颜色
+  .is-selected {
+    background-color: var(--ao-el-active-color) !important;
+  }
+  // 语言切换按钮菜单样式优化
+  .lang-btn-item {
+    .el-dropdown-menu__item {
+      padding-left: 13px !important;
+      padding-right: 6px !important;
+      margin-bottom: 3px !important;
+    }
+    &:last-child {
+      .el-dropdown-menu__item {
+        margin-bottom: 0 !important;
+      }
+    }
+    .menu-txt {
+      min-width: 60px;
+      display: block;
+    }
+    i {
+      font-size: 10px;
+      margin-left: 10px;
+    }
+  }
+}
+
+.ao-card,
+.ao-card-sm,
+.ao-card-xs {
+  background: var(--default-box-color);
+  border: 1px solid var(--ao-card-border);
+}
+
+.ao-card-xs {
+  border-radius: calc(var(--custom-radius) + -4px);
+}
+
+// 搜索栏与表格卡片统一使用直角
+.ao-search-bar,
+.ao-table-card {
+  border-radius: 0 !important;
+}
+
+// 元素全屏
+.el-full-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100vw !important;
+  height: 100% !important;
+  z-index: 2300;
+  margin-top: 0;
+  padding: 15px;
+  box-sizing: border-box;
+  background-color: var(--default-box-color);
+  display: flex;
+  flex-direction: column;
+}
+
+// 表格卡片
+.ao-table-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  .el-card__body {
+    height: 100%;
+    // 收紧卡片内边距，提升表格区域信息密度
+    padding: 10px;
+    overflow: hidden;
+  }
+}
+
+// 页面布局高度：内容区留白由各容器自身内边距提供，头部高度由脚本运行时写入
+// --ao-full-height 在此由 CSS 组合，脚本不参与间距计算
+:root {
+  --ao-header-height: 0px;
+  --ao-content-header-height: 0px;
+  --ao-full-height: calc(100vh - var(--ao-header-height) - var(--ao-content-header-height));
+}
+
+// 容器全高
+.ao-full-height {
+  height: var(--ao-full-height);
+  display: flex;
+  flex-direction: column;
+  @media (max-width: 640px) {
+    height: auto;
+  }
+}
+
+// 徽章样式
+.ao-badge {
+  position: absolute;
+  top: 0;
+  right: 20px;
+  bottom: 0;
+  width: 6px;
+  height: 6px;
+  margin: auto;
+  background: var(--ao-badge-dot);
+  border-radius: 50%;
+  animation: breathe 1.5s ease-in-out infinite;
+  &.ao-badge-horizontal {
+    right: 0;
+  }
+  &.ao-badge-mixed {
+    right: 0;
+  }
+  &.ao-badge-dual {
+    right: 5px;
+    top: 5px;
+    bottom: auto;
+  }
+}
+
+// 文字徽章样式
+.ao-text-badge {
+  position: absolute;
+  top: 0;
+  right: 12px;
+  bottom: 0;
+  min-width: 20px;
+  height: 18px;
+  line-height: 17px;
+  padding: 0 5px;
+  margin: auto;
+  font-size: 10px;
+  color: var(--ao-white);
+  text-align: center;
+  background: var(--ao-badge-text-bg);
+  border-radius: 4px;
+}
+
+@keyframes breathe {
+  0% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+  100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+}
+
+// 修复老机型 loading 定位问题
+.ao-loading-fix {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+.ao-loading-fix .el-loading-spinner {
+  position: static !important;
+  top: auto !important;
+  left: auto !important;
+  transform: none !important;
+}
+
+// 去除移动端点击背景色
+@media screen and (max-width: 1180px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+}

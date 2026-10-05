@@ -1,0 +1,117 @@
+// theme.scss - 主题 CSS 变量定义（亮色 :root + 暗色 .dark 模式）
+// 亮色主题
+:root {
+  /* 基础色 */
+  --ao-color: #ffffff;
+  --theme-color: var(--main-color);
+  /* Element Plus 语义色别名，统一由 Element Plus 主题变量提供 */
+  --ao-primary: var(--el-color-primary);
+  --ao-secondary: var(--el-color-info);
+  --ao-error: var(--el-color-error);
+  --ao-info: var(--el-color-info);
+  --ao-success: var(--el-color-success);
+  --ao-warning: var(--el-color-warning);
+  --ao-danger: var(--el-color-danger);
+  /* 灰度色阶 - 亮色模式 */
+  --ao-gray-100: #f9fafb;
+  --ao-gray-200: #f2f4f5;
+  --ao-gray-300: #e6eaeb;
+  --ao-gray-400: #dbdfe1;
+  --ao-gray-500: #949eb7;
+  --ao-gray-600: #7987a1;
+  --ao-gray-700: #4d5875;
+  --ao-gray-800: #383853;
+  --ao-gray-900: #323251;
+  /* 边框色 */
+  --ao-card-border: rgba(0, 0, 0, 0.08);
+  --default-border: #e2e8ee;
+  --default-border-dashed: #dbdfe9;
+  /* 背景色 */
+  --default-bg-color: #ffffff;
+  --default-box-color: #ffffff;
+  /* 悬停背景色 */
+  --ao-hover-color: #edeff0;
+  /* 激活背景色 */
+  --ao-active-color: #f2f4f5;
+  /* Element 组件选中背景色 */
+  --ao-el-active-color: #f2f4f5;
+  /* 主题色上的文字色 */
+  --ao-text-on-theme: #ffffff;
+  /* 模态框遮罩背景 */
+  --ao-modal-overlay: rgba(0, 0, 0, 0.2);
+  /* 样式整理语义色 */
+  --ao-white: #ffffff;
+  --ao-black: #000000;
+  --ao-shadow-05: rgb(0 0 0 / 5%);
+  --ao-shadow-08: rgb(0 0 0 / 8%);
+  --ao-shadow-10: rgb(0 0 0 / 10%);
+  --ao-shadow-12: rgb(0 0 0 / 12%);
+  --ao-shadow-15: rgb(0 0 0 / 15%);
+  --ao-shadow-20: rgb(0 0 0 / 20%);
+  --ao-badge-dot: #ff3860;
+  --ao-badge-text-bg: #fd4e4e;
+  --ao-notification-scrollbar-thumb: #222222;
+  --ao-menu-dark-bg: #27282d;
+  --ao-menu-dark-hover-bg: #0f1015;
+  --ao-popup-menu-dark-active-bg: #292a2e;
+  --ao-login-yellow-start: #fcbb04;
+  --ao-login-yellow-end: #fffc00;
+  --ao-login-blue-shadow: rgb(64 87 167 / 12%);
+  --ao-login-dark-shadow: #333333;
+  --ao-login-light-shadow: #dddddd;
+  --ao-login-banner-dark: #1f2937;
+}
+
+// 暗色主题
+.dark {
+  /* 基础色 */
+  --ao-color: #000000;
+  /* 灰度色阶 - 暗色模式 */
+  --ao-gray-100: #110f0f;
+  --ao-gray-200: #17171c;
+  --ao-gray-300: #393946;
+  --ao-gray-400: #505062;
+  --ao-gray-500: #73738c;
+  --ao-gray-600: #8f8fa3;
+  --ao-gray-700: #ababba;
+  --ao-gray-800: #c7c7d1;
+  --ao-gray-900: #e3e3e8;
+  /* 边框色 */
+  --ao-card-border: rgba(255, 255, 255, 0.08);
+  --default-border: rgba(255, 255, 255, 0.1);
+  --default-border-dashed: #363843;
+  /* 背景色 */
+  --default-bg-color: #161618;
+  --default-box-color: #161618;
+  /* 悬停背景色 */
+  --ao-hover-color: #252530;
+  /* 激活背景色 */
+  --ao-active-color: #202226;
+  /* Element 组件选中背景色 */
+  --ao-el-active-color: #2e2e38;
+  /* 主题色上的文字色 */
+  --ao-text-on-theme: #ffffff;
+  /* 模态框遮罩背景 */
+  --ao-modal-overlay: rgba(23, 23, 26, 0.6);
+  /* 样式整理语义色 */
+  --ao-white: #ffffff;
+  --ao-black: #000000;
+  --ao-shadow-05: rgb(0 0 0 / 5%);
+  --ao-shadow-08: rgb(0 0 0 / 8%);
+  --ao-shadow-10: rgb(0 0 0 / 10%);
+  --ao-shadow-12: rgb(0 0 0 / 12%);
+  --ao-shadow-15: rgb(0 0 0 / 15%);
+  --ao-shadow-20: rgb(0 0 0 / 20%);
+  --ao-badge-dot: #ff3860;
+  --ao-badge-text-bg: #fd4e4e;
+  --ao-notification-scrollbar-thumb: #222222;
+  --ao-menu-dark-bg: #27282d;
+  --ao-menu-dark-hover-bg: #0f1015;
+  --ao-popup-menu-dark-active-bg: #292a2e;
+  --ao-login-yellow-start: #fcbb04;
+  --ao-login-yellow-end: #fffc00;
+  --ao-login-blue-shadow: rgb(64 87 167 / 12%);
+  --ao-login-dark-shadow: #333333;
+  --ao-login-light-shadow: #dddddd;
+  --ao-login-banner-dark: #1f2937;
+}
