@@ -34,12 +34,31 @@
     width: 100%;
     max-width: var(--ao-sidebar-width);
     height: 60px;
+    // 左右默认内边距取菜单项同级内边距（Element Plus 的 --el-menu-base-level-padding，
+    // 默认 20px）：超长标题 / 文字与容器边缘保持间隔，并与下方菜单项的图标、文字起始位置对齐
+    padding: 0 var(--el-menu-base-level-padding);
     overflow: hidden;
     cursor: pointer;
+    // 插槽内容容器：自身不设内边距并裁掉溢出，使裁切边界落在 .header 的内容盒上，
+    // 超长内容因此在距左右边缘一个内边距处被裁切（若只裁 .header，溢出会画进内边距区域而贴边）
+    &__inner {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      min-width: 0;
+      height: 100%;
+      overflow: hidden;
+    }
   }
-  // 折叠态与折叠侧栏宽度同源
+  // 折叠态：宽度与折叠侧栏宽度同源；此态只展示图标类内容，取消左右内边距并整体居中
+  // （64px 折叠宽度下再留 20px 内边距会把品牌内容压到 24px 并裁切，故此处与展开态不同）
   .menu-left-close .header {
     max-width: var(--ao-sidebar-collapse-width);
+    padding: 0;
+  }
+  // 折叠态覆盖需与 .menu-left-close 组合，无法用 &__inner 表达，保持扁平选择器
+  .menu-left-close .header__inner {
+    justify-content: center;
   }
   .el-menu {
     box-sizing: border-box;

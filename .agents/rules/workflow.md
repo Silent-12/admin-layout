@@ -16,6 +16,8 @@
 
 - **插槽契约（AppLayout）**：`#sidebar-header` 作用域插槽（参数 `menuOpen`、`theme`，类型 `SidebarHeaderSlotProps`）用于Admin模板提供侧栏顶部区域内容；未传插槽时该区域留空，包内不再渲染默认 Logo 与系统名称。插槽名与参数属于公开契约，修改需升版本并同步本文件与 README。
 
+- **顶部区域内边距与裁切**：展开态 `.header` 左右内边距取菜单项同级值（`--el-menu-base-level-padding`，默认 20px），并由内层 `.header__inner` 承担溢出裁切，使超长内容在内容盒边界被裁切、不贴左右边缘（若只裁 `.header`，溢出会画进内边距区域而贴边）；折叠态取消左右内边距并居中。省略号需由Admin模板侧实现（插槽根元素 `min-width: 0` + 文本元素 `overflow: hidden` / `text-overflow: ellipsis` / `white-space: nowrap`）。
+
 - **系统名称归属**：`config.systemName` 仅用于浏览器页面标题（`setPageTitle`），侧栏顶部文案由Admin模板经 `#sidebar-header` 插槽自行渲染。
 
 - 包内 UI 状态 store 仅限 `setting`、`app`、`worktab` 三个（随包走）；`worktab` 的写入点在Admin模板路由守卫，包必须导出 `useWorktabStore` 供Admin模板 import。

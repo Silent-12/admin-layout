@@ -23,8 +23,10 @@
   .sidebar-brand {
     display: flex;
     align-items: center;
+    // 左右间距由包内 .header 的默认内边距（--el-menu-base-level-padding）提供，与菜单项对齐；
+    // min-width: 0 允许品牌区收缩到容器宽度内，配合下方 __name 的 ellipsis 生效
+    min-width: 0;
     height: 100%;
-    padding-left: 22px;
 
     &__logo {
       display: flex;

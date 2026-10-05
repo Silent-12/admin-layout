@@ -16,7 +16,10 @@
           background: getMenuTheme.background
         }"
       >
-        <slot name="sidebar-header" :menu-open="menuOpen" :theme="getMenuTheme" />
+        <!-- 内层容器承担溢出裁切：裁切边界为 .header 的内容盒，保证超长内容与左右边缘保持内边距 -->
+        <div class="header__inner">
+          <slot name="sidebar-header" :menu-open="menuOpen" :theme="getMenuTheme" />
+        </div>
       </div>
 
       <!-- 菜单内容 -->

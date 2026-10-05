@@ -38,7 +38,9 @@ app.use(AdminLayout, {
 ## 契约约定
 
 - 下游只允许从包入口导入；`install` 注入接口（`AdminLayoutOptions`）与布局锚点 ID、`--ao-*` CSS 变量是公开契约，修改属于破坏性变更。
-- `AppLayout` 提供 `#sidebar-header` 作用域插槽（参数 `menuOpen`、`theme`，类型 `SidebarHeaderSlotProps`），侧栏顶部区域内容由Admin模板提供；未传插槽时该区域留空。侧栏头部高度固定 60px（移动端 50px），自定义内容需在该高度内布局。
+- `AppLayout` 提供 `#sidebar-header` 作用域插槽（参数 `menuOpen`、`theme`，类型 `SidebarHeaderSlotProps`），侧栏顶部区域内容由Admin模板提供；未传插槽时该区域留空。
+- 侧栏顶部区域（`#sidebar-header`）的包内默认行为：展开态高度 60px、内容垂直居中、左右内边距与菜单项同级（`--el-menu-base-level-padding`，默认 20px）；超长内容在内容盒边界被裁切，不会贴到容器左右边缘；折叠态取消左右内边距并整体居中（64px 下再留内边距会压窄并裁切品牌内容）；移动端（≤800px）高度 50px，关闭态不渲染该区域。
+- 需Admin模板自行处理的事项：① 内容高度不超过当前状态高度（展开 60px、移动端 50px），超出会被裁切；② 折叠态（插槽参数 `menuOpen === false`）只保留图标类内容，64px 宽度放不下文字；③ 不要自设左右内边距（会与包内默认值叠加）；④ 需要省略号而非硬裁时，插槽根元素设 `min-width: 0`，文本元素使用 `overflow: hidden` + `text-overflow: ellipsis` + `white-space: nowrap`。
 - `config.systemName` 仅用于浏览器页面标题（`setPageTitle`），不参与侧栏渲染。
 - 侧栏宽度由 `--ao-sidebar-width`（展开）与 `--ao-sidebar-collapse-width`（折叠）统一控制，侧栏菜单与顶部区域共同引用；Admin模板可覆盖这两个变量调整侧栏尺寸。
 - 包内 UI 状态 store 仅 `setting` / `app` / `worktab`；`worktab` 由Admin模板路由守卫写入（包导出 `useWorktabStore`）。

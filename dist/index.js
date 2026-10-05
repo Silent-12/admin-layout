@@ -45,13 +45,13 @@ const nn = (e) => {
   {
     name: "设置面板",
     key: "settings-panel",
-    component: Ke(() => Promise.resolve().then(() => Us)),
+    component: Ke(() => Promise.resolve().then(() => Gs)),
     enabled: !0
   },
   {
     name: "全局搜索",
     key: "global-search",
-    component: Ke(() => Promise.resolve().then(() => ca)),
+    component: Ke(() => Promise.resolve().then(() => ua)),
     enabled: !0
   }
 ], un = () => cn.filter((e) => e.enabled !== !1), dn = /* @__PURE__ */ Q({
@@ -79,10 +79,10 @@ function dt(e) {
     }
   return "";
 }
-function ba(e, t) {
+function _a(e, t) {
   return [...e].sort((n, s) => s.path.length - n.path.length).find((n) => t === n.path || t.startsWith(`${n.path}/`));
 }
-const _a = (e) => {
+const xa = (e) => {
   const { title: t } = e.meta;
   t && setTimeout(() => {
     document.title = `${ge(String(t))} - ${rn()}`;
@@ -1468,7 +1468,7 @@ function Ie() {
     prefersDark: c
   };
 }
-function xa() {
+function Aa() {
   const e = te(), t = lt(), n = () => {
     const s = document.getElementsByTagName("html")[0];
     let c = e.systemThemeType;
@@ -1798,7 +1798,7 @@ function gt(e, t) {
     });
   }), { headerHeight: n, contentHeaderHeight: s };
 }
-function Aa() {
+function Ta() {
   const e = w(), t = w(), { headerHeight: n, contentHeaderHeight: s } = gt(e, t);
   return {
     /** 头部元素引用 */
@@ -1996,7 +1996,7 @@ const Fo = { id: "app-content-header" }, Po = {
 }), Jo = /* @__PURE__ */ ne(Qo, [["__scopeId", "data-v-b907ca25"]]), Zo = {
   key: 0,
   class: "layout-sidebar"
-}, Ye = 800, es = 350, ts = /* @__PURE__ */ Q({
+}, es = { class: "header__inner" }, Ye = 800, ts = 350, ns = /* @__PURE__ */ Q({
   name: "AoSidebarMenu",
   __name: "index",
   setup(e) {
@@ -2008,7 +2008,7 @@ const Fo = { id: "app-content-header" }, Po = {
       () => {
         g.value = !1;
       },
-      es,
+      ts,
       { immediate: !1 }
     ), { homePath: I } = xe(), A = () => {
       n.push(I.value);
@@ -2035,10 +2035,12 @@ const Fo = { id: "app-content-header" }, Po = {
             background: i(l).background
           })
         }, [
-          Be(K.$slots, "sidebar-header", {
-            menuOpen: i(r),
-            theme: i(l)
-          }, void 0, !0)
+          u("div", es, [
+            Be(K.$slots, "sidebar-header", {
+              menuOpen: i(r),
+              theme: i(l)
+            }, void 0, !0)
+          ])
         ], 4),
         T(i(at), {
           style: J(v.value)
@@ -2080,33 +2082,33 @@ const Fo = { id: "app-content-header" }, Po = {
       ], 6)
     ])) : z("", !0);
   }
-}), ns = /* @__PURE__ */ ne(ts, [["__scopeId", "data-v-170a525a"]]), os = { class: "app-layout" }, ss = { id: "app-sidebar" }, as = { id: "app-main" }, ls = { id: "app-header" }, is = { id: "app-content" }, rs = { id: "app-global" }, cs = /* @__PURE__ */ Q({
+}), os = /* @__PURE__ */ ne(ns, [["__scopeId", "data-v-4bc7d66a"]]), ss = { class: "app-layout" }, as = { id: "app-sidebar" }, ls = { id: "app-main" }, is = { id: "app-header" }, rs = { id: "app-content" }, cs = { id: "app-global" }, us = /* @__PURE__ */ Q({
   name: "AppLayout",
   __name: "AppLayout",
   setup(e) {
-    return (t, n) => (f(), y("div", os, [
-      u("aside", ss, [
-        T(ns, null, {
+    return (t, n) => (f(), y("div", ss, [
+      u("aside", as, [
+        T(os, null, {
           "sidebar-header": N((s) => [
             Be(t.$slots, "sidebar-header", xt(At(s)), void 0, !0)
           ]),
           _: 3
         })
       ]),
-      u("main", as, [
-        u("div", ls, [
+      u("main", ls, [
+        u("div", is, [
           T(Do)
         ]),
-        u("div", is, [
+        u("div", rs, [
           T(Wo)
         ])
       ]),
-      u("div", rs, [
+      u("div", cs, [
         T(dn)
       ])
     ]));
   }
-}), Ta = /* @__PURE__ */ ne(cs, [["__scopeId", "data-v-475bd53f"]]), wa = {
+}), wa = /* @__PURE__ */ ne(us, [["__scopeId", "data-v-475bd53f"]]), Sa = {
   install(e, t = {}) {
     console.info(`[ao-admin-layout] v${en}`), nn(t), t.i18n && (t.i18n.global.mergeLocaleMessage("zh", qt), t.i18n.global.mergeLocaleMessage("en", Zt));
   }
@@ -2146,7 +2148,7 @@ function Ue() {
     createToggleHandler: n
   };
 }
-function us() {
+function ds() {
   const e = te(), t = We(), { systemThemeType: n, systemThemeMode: s } = se(e), { showSettingsPanel: c } = se(t), { setSystemTheme: r, setSystemAutoTheme: l } = Ie(), { domOperations: o } = Ue(), g = Ft({ tablet: 1e3 }).smaller("tablet"), C = E(() => e.systemThemeColor), p = () => {
     const I = () => {
       fe.systemMainColor.includes(C.value) || (e.setElementTheme(fe.systemMainColor[0]), e.reload());
@@ -2214,7 +2216,7 @@ function us() {
     }
   };
 }
-const ds = { class: "setting-drawer" }, hs = { class: "drawer-con" }, ms = /* @__PURE__ */ Q({
+const hs = { class: "setting-drawer" }, ms = { class: "drawer-con" }, fs = /* @__PURE__ */ Q({
   __name: "SettingDrawer",
   props: {
     modelValue: { type: Boolean }
@@ -2231,7 +2233,7 @@ const ds = { class: "setting-drawer" }, hs = { class: "drawer-con" }, ms = /* @_
     }, o = () => {
       c.value = !1;
     };
-    return (m, g) => (f(), y("div", ds, [
+    return (m, g) => (f(), y("div", hs, [
       T(i(Mt), {
         size: "300px",
         modelValue: c.value,
@@ -2245,7 +2247,7 @@ const ds = { class: "setting-drawer" }, hs = { class: "drawer-con" }, ms = /* @_
         onClose: l
       }, {
         default: N(() => [
-          u("div", hs, [
+          u("div", ms, [
             Be(m.$slots, "default")
           ])
         ]),
@@ -2253,12 +2255,12 @@ const ds = { class: "setting-drawer" }, hs = { class: "drawer-con" }, ms = /* @_
       }, 8, ["modelValue"])
     ]));
   }
-}), fs = { class: "header-actions" }, gs = /* @__PURE__ */ Q({
+}), gs = { class: "header-actions" }, vs = /* @__PURE__ */ Q({
   __name: "SettingHeader",
   emits: ["close"],
   setup(e) {
     return (t, n) => (f(), y("div", null, [
-      u("div", fs, [
+      u("div", gs, [
         u("div", {
           onClick: n[0] || (n[0] = (s) => t.$emit("close")),
           class: "close-btn"
@@ -2271,7 +2273,7 @@ const ds = { class: "setting-drawer" }, hs = { class: "drawer-con" }, ms = /* @_
       ])
     ]));
   }
-}), vs = /* @__PURE__ */ ne(gs, [["__scopeId", "data-v-513a0ce2"]]), ps = /* @__PURE__ */ Q({
+}), ps = /* @__PURE__ */ ne(vs, [["__scopeId", "data-v-513a0ce2"]]), ys = /* @__PURE__ */ Q({
   __name: "SectionTitle",
   props: {
     title: {},
@@ -2283,7 +2285,7 @@ const ds = { class: "setting-drawer" }, hs = { class: "drawer-con" }, ms = /* @_
       style: J(e.style)
     }, R(e.title), 5));
   }
-}), De = /* @__PURE__ */ ne(ps, [["__scopeId", "data-v-579c7578"]]);
+}), De = /* @__PURE__ */ ne(ys, [["__scopeId", "data-v-579c7578"]]);
 function Ge() {
   const { t: e } = we(), t = {
     // 主题色彩选项
@@ -2343,7 +2345,7 @@ function Ge() {
     basicSettingsConfig: n
   };
 }
-const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = { class: "name" }, As = /* @__PURE__ */ Q({
+const bs = { class: "setting-box-wrap" }, _s = ["onClick"], xs = ["src"], As = { class: "name" }, Ts = /* @__PURE__ */ Q({
   __name: "ThemeSettings",
   setup(e) {
     const t = te(), { systemThemeMode: n } = se(t), { configOptions: s } = Ge(), { switchThemeStyles: c } = Ie();
@@ -2351,7 +2353,7 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
       T(De, {
         title: r.$t("setting.theme.title")
       }, null, 8, ["title"]),
-      u("div", ys, [
+      u("div", bs, [
         (f(!0), y(Y, null, ee(i(s).themeList, (o, m) => (f(), y("div", {
           class: "setting-item",
           key: o.theme,
@@ -2362,14 +2364,14 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
           }, [
             u("img", {
               src: o.img
-            }, null, 8, _s)
+            }, null, 8, xs)
           ], 2),
-          u("p", xs, R(r.$t(`setting.theme.list[${m}]`)), 1)
-        ], 8, bs))), 128))
+          u("p", As, R(r.$t(`setting.theme.list[${m}]`)), 1)
+        ], 8, _s))), 128))
       ])
     ], 64));
   }
-}), Ts = { class: "setting-box-wrap" }, ws = ["onClick"], Ss = ["src"], ks = /* @__PURE__ */ Q({
+}), ws = { class: "setting-box-wrap" }, Ss = ["onClick"], ks = ["src"], Cs = /* @__PURE__ */ Q({
   __name: "MenuStyleSettings",
   setup(e) {
     const t = fe.themeList, n = te(), { menuThemeType: s, isDark: c } = se(n), r = E(() => c.value), l = (o) => {
@@ -2379,7 +2381,7 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
       T(De, {
         title: o.$t("setting.menu.title")
       }, null, 8, ["title"]),
-      u("div", Ts, [
+      u("div", ws, [
         (f(!0), y(Y, null, ee(i(t), (g) => (f(), y("div", {
           class: "setting-item",
           key: g.theme,
@@ -2393,13 +2395,13 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
           }, [
             u("img", {
               src: g.img
-            }, null, 8, Ss)
+            }, null, 8, ks)
           ], 6)
-        ], 8, ws))), 128))
+        ], 8, Ss))), 128))
       ])
     ], 64));
   }
-}), Cs = { class: "color-list-wrapper" }, Es = { class: "color-list" }, Ms = ["onClick"], Bs = /* @__PURE__ */ Q({
+}), Es = { class: "color-list-wrapper" }, Ms = { class: "color-list" }, Bs = ["onClick"], Ls = /* @__PURE__ */ Q({
   __name: "ColorSettings",
   setup(e) {
     const t = te(), { systemThemeColor: n } = se(t), { configOptions: s } = Ge(), { colorHandlers: c } = Ue();
@@ -2408,8 +2410,8 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
         title: r.$t("setting.color.title"),
         class: "color-section-title"
       }, null, 8, ["title"]),
-      u("div", Cs, [
-        u("div", Es, [
+      u("div", Es, [
+        u("div", Ms, [
           (f(!0), y(Y, null, ee(i(s).mainColors, (o) => (f(), y("div", {
             key: o,
             class: "color-item",
@@ -2422,12 +2424,12 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
             }, null, 512), [
               [de, o === i(n)]
             ])
-          ], 12, Ms))), 128))
+          ], 12, Bs))), 128))
         ])
       ])
     ]));
   }
-}), Ls = /* @__PURE__ */ ne(Bs, [["__scopeId", "data-v-21e1cf4a"]]), $s = { class: "setting-item" }, Is = { class: "setting-label" }, Ds = /* @__PURE__ */ Q({
+}), $s = /* @__PURE__ */ ne(Ls, [["__scopeId", "data-v-21e1cf4a"]]), Is = { class: "setting-item" }, Ds = { class: "setting-label" }, Hs = /* @__PURE__ */ Q({
   __name: "SettingItem",
   props: {
     config: {},
@@ -2449,8 +2451,8 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
         console.error("Error handling change for config:", n.config.key, o);
       }
     };
-    return (l, o) => (f(), y("div", $s, [
-      u("span", Is, R(e.config.label), 1),
+    return (l, o) => (f(), y("div", Is, [
+      u("span", Ds, R(e.config.label), 1),
       e.config.type === "switch" ? (f(), G(i(Bt), {
         key: 0,
         "model-value": e.modelValue,
@@ -2481,7 +2483,7 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
       }, 8, ["model-value", "style"])) : z("", !0)
     ]));
   }
-}), Hs = /* @__PURE__ */ ne(Ds, [["__scopeId", "data-v-eb2bba90"]]), Os = /* @__PURE__ */ Q({
+}), Os = /* @__PURE__ */ ne(Hs, [["__scopeId", "data-v-eb2bba90"]]), Rs = /* @__PURE__ */ Q({
   __name: "BasicSettings",
   setup(e) {
     const t = te(), { basicSettingsConfig: n } = Ge(), { basicHandlers: s } = Ue(), {
@@ -2507,7 +2509,7 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
         title: $.$t("setting.basics.title"),
         class: "basic-settings-title"
       }, null, 8, ["title"]),
-      (f(!0), y(Y, null, ee(i(n), (k) => (f(), G(Hs, {
+      (f(!0), y(Y, null, ee(i(n), (k) => (f(), G(Os, {
         key: k.key,
         config: k,
         "model-value": p(k.key),
@@ -2515,7 +2517,7 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
       }, null, 8, ["config", "model-value", "onChange"]))), 128))
     ]));
   }
-}), Rs = /* @__PURE__ */ ne(Os, [["__scopeId", "data-v-cbba06c8"]]), Fs = { class: "setting-actions" }, Ps = /* @__PURE__ */ Q({
+}), Fs = /* @__PURE__ */ ne(Rs, [["__scopeId", "data-v-cbba06c8"]]), Ps = { class: "setting-actions" }, Ns = /* @__PURE__ */ Q({
   name: "SettingActions",
   __name: "SettingActions",
   setup(e) {
@@ -2551,7 +2553,7 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
         console.error("重置配置失败:", l), Te.error(t("setting.actions.resetFailed"));
       }
     };
-    return (l, o) => (f(), y("div", Fs, [
+    return (l, o) => (f(), y("div", Ps, [
       T(i(st), {
         type: "danger",
         plain: "",
@@ -2565,41 +2567,41 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
       })
     ]));
   }
-}), Ns = /* @__PURE__ */ ne(Ps, [["__scopeId", "data-v-3d44080b"]]), Vs = { class: "layout-settings" }, Ws = /* @__PURE__ */ Q({
+}), Vs = /* @__PURE__ */ ne(Ns, [["__scopeId", "data-v-3d44080b"]]), Ws = { class: "layout-settings" }, Us = /* @__PURE__ */ Q({
   name: "AoSettingsPanel",
   __name: "index",
   props: {
     open: { type: Boolean }
   },
   setup(e) {
-    const t = e, n = us(), { showDrawer: s } = n, { handleOpen: c, handleClose: r, closeDrawer: l } = n.useDrawerControl(), { initializeSettings: o, cleanupSettings: m } = n.useSettingsInitializer();
+    const t = e, n = ds(), { showDrawer: s } = n, { handleOpen: c, handleClose: r, closeDrawer: l } = n.useDrawerControl(), { initializeSettings: o, cleanupSettings: m } = n.useSettingsInitializer();
     return n.usePropsWatcher(t), Ae(() => {
       o();
     }), Ce(() => {
       m();
-    }), (g, C) => (f(), y("div", Vs, [
-      T(ms, {
+    }), (g, C) => (f(), y("div", Ws, [
+      T(fs, {
         modelValue: i(s),
         "onUpdate:modelValue": C[0] || (C[0] = (p) => et(s) ? s.value = p : null),
         onOpen: i(c),
         onClose: i(r)
       }, {
         default: N(() => [
-          T(vs, { onClose: i(l) }, null, 8, ["onClose"]),
-          T(As),
-          T(ks),
-          T(Ls),
-          T(Rs),
-          T(Ns)
+          T(ps, { onClose: i(l) }, null, 8, ["onClose"]),
+          T(Ts),
+          T(Cs),
+          T($s),
+          T(Fs),
+          T(Vs)
         ]),
         _: 1
       }, 8, ["modelValue", "onOpen", "onClose"])
     ]));
   }
-}), Us = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}), Gs = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: Ws
-}, Symbol.toStringTag, { value: "Module" })), Gs = $e(
+  default: Us
+}, Symbol.toStringTag, { value: "Module" })), Ks = $e(
   "aoSearchStore",
   () => {
     const e = w([]);
@@ -2614,11 +2616,11 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
       pick: ["searchHistory"]
     }
   }
-), Ks = { class: "layout-search" }, qs = { class: "search-input__suffix" }, Xs = { class: "result search-result" }, zs = ["onClick", "onMouseenter"], js = { class: "search-history__title" }, Ys = { class: "search-history__list" }, Qs = ["onClick", "onMouseenter"], Js = ["onClick"], Zs = { class: "dialog-footer" }, ea = { class: "dialog-footer__group dialog-footer__group--center" }, ta = { class: "dialog-footer__text" }, na = { class: "dialog-footer__group" }, oa = { class: "dialog-footer__text" }, sa = { class: "dialog-footer__group" }, aa = { class: "dialog-footer__text" }, la = 10, ia = /* @__PURE__ */ Q({
+), qs = { class: "layout-search" }, Xs = { class: "search-input__suffix" }, zs = { class: "result search-result" }, js = ["onClick", "onMouseenter"], Ys = { class: "search-history__title" }, Qs = { class: "search-history__list" }, Js = ["onClick", "onMouseenter"], Zs = ["onClick"], ea = { class: "dialog-footer" }, ta = { class: "dialog-footer__group dialog-footer__group--center" }, na = { class: "dialog-footer__text" }, oa = { class: "dialog-footer__group" }, sa = { class: "dialog-footer__text" }, aa = { class: "dialog-footer__group" }, la = { class: "dialog-footer__text" }, ia = 10, ra = /* @__PURE__ */ Q({
   name: "AoGlobalSearch",
   __name: "AoGlobalSearch",
   setup(e) {
-    const t = Gs(), n = We(), s = E(() => ke().menuList), { showGlobalSearch: c } = se(n), r = w(""), l = w([]), { searchHistory: o } = se(t), m = w(null), g = w(0), C = w(0), p = w(), H = w(!1);
+    const t = Ks(), n = We(), s = E(() => ke().menuList), { showGlobalSearch: c } = se(n), r = w(""), l = w([]), { searchHistory: o } = se(t), m = w(null), g = w(0), C = w(0), p = w(), H = w(!1);
     he(c, (h) => {
       h && v();
     }), Ae(() => {
@@ -2685,7 +2687,7 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
       const S = h.path || String(h.meta.link || ""), x = o.value.findIndex(
         (D) => (D.path || String(D.meta.link || "")) === S
       );
-      x !== -1 ? o.value.splice(x, 1) : o.value.length >= la && o.value.pop();
+      x !== -1 ? o.value.splice(x, 1) : o.value.length >= ia && o.value.pop();
       const M = { ...h };
       delete M.children, delete M.meta.authList, o.value.unshift(M), B();
     }, a = (h) => {
@@ -2697,7 +2699,7 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
     }, O = (h) => {
       !H.value && !r.value && (C.value = h);
     };
-    return (h, S) => (f(), y("div", Ks, [
+    return (h, S) => (f(), y("div", qs, [
       T(i(Dt), {
         modelValue: i(c),
         "onUpdate:modelValue": S[1] || (S[1] = (x) => et(c) ? c.value = x : null),
@@ -2708,15 +2710,15 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
         onClose: d
       }, {
         footer: N(() => [
-          u("div", Zs, [
-            u("div", ea, [
+          u("div", ea, [
+            u("div", ta, [
               T(i(X), {
                 icon: "fluent:arrow-enter-left-20-filled",
                 class: "keyboard"
               }),
-              u("span", ta, R(h.$t("search.selectKeydown")), 1)
+              u("span", na, R(h.$t("search.selectKeydown")), 1)
             ]),
-            u("div", na, [
+            u("div", oa, [
               T(i(X), {
                 icon: "ri:arrow-up-wide-fill",
                 class: "keyboard"
@@ -2725,13 +2727,13 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
                 icon: "ri:arrow-down-wide-fill",
                 class: "keyboard"
               }),
-              u("span", oa, R(h.$t("search.switchKeydown")), 1)
+              u("span", sa, R(h.$t("search.switchKeydown")), 1)
             ]),
-            u("div", sa, [
+            u("div", aa, [
               S[2] || (S[2] = u("i", { class: "keyboard keyboard--esc" }, [
                 u("p", { class: "keyboard__esc-text" }, "ESC")
               ], -1)),
-              u("span", aa, R(h.$t("search.exitKeydown")), 1)
+              u("span", la, R(h.$t("search.exitKeydown")), 1)
             ])
           ])
         ]),
@@ -2749,7 +2751,7 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
             class: "search-input"
           }, {
             suffix: N(() => [
-              u("div", qs, [
+              u("div", Xs, [
                 T(i(X), { icon: "fluent:arrow-enter-left-20-filled" })
               ])
             ]),
@@ -2763,7 +2765,7 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
             always: ""
           }, {
             default: N(() => [
-              ue(u("div", Xs, [
+              ue(u("div", zs, [
                 (f(!0), y(Y, null, ee(l.value, (x, M) => (f(), y("div", {
                   class: "box search-result__item",
                   key: M
@@ -2777,14 +2779,14 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
                     ue(T(i(X), { icon: "fluent:arrow-enter-left-20-filled" }, null, 512), [
                       [de, ae(M)]
                     ])
-                  ], 42, zs)
+                  ], 42, js)
                 ]))), 128))
               ], 512), [
                 [de, l.value.length]
               ]),
               ue(u("div", null, [
-                u("p", js, R(h.$t("search.historyTitle")), 1),
-                u("div", Ys, [
+                u("p", Ys, R(h.$t("search.historyTitle")), 1),
+                u("div", Qs, [
                   (f(!0), y(Y, null, ee(i(o), (x, M) => (f(), y("div", {
                     class: oe(["box search-history__item", C.value === M ? "search-history__item--highlighted" : ""]),
                     key: M,
@@ -2800,8 +2802,8 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
                         icon: "ri:close-large-fill",
                         class: "search-history__delete-icon"
                       })
-                    ], 8, Js)
-                  ], 42, Qs))), 128))
+                    ], 8, Zs)
+                  ], 42, Js))), 128))
                 ])
               ], 512), [
                 [de, !r.value && l.value.length === 0 && i(o).length > 0]
@@ -2814,14 +2816,14 @@ const ys = { class: "setting-box-wrap" }, bs = ["onClick"], _s = ["src"], xs = {
       }, 8, ["modelValue"])
     ]));
   }
-}), ra = /* @__PURE__ */ ne(ia, [["__scopeId", "data-v-456bbfe9"]]), ca = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
+}), ca = /* @__PURE__ */ ne(ra, [["__scopeId", "data-v-456bbfe9"]]), ua = /* @__PURE__ */ Object.freeze(/* @__PURE__ */ Object.defineProperty({
   __proto__: null,
-  default: ra
+  default: ca
 }, Symbol.toStringTag, { value: "Module" }));
 export {
-  wa as AdminLayout,
-  Ta as AppLayout,
-  ba as findApplicationByPath,
+  Sa as AdminLayout,
+  wa as AppLayout,
+  _a as findApplicationByPath,
   ge as formatMenuTitle,
   on as getContextI18n,
   rt as getContextRouter,
@@ -2832,16 +2834,16 @@ export {
   rn as getSystemName,
   sn as getUserInfo,
   ft as handleMenuJump,
-  xa as initializeTheme,
+  Aa as initializeTheme,
   ln as logout,
   Xe as openExternalLink,
   nn as setLayoutContext,
-  _a as setPageTitle,
+  xa as setPageTitle,
   We as useAppStore,
   Ro as useAutoLayoutHeight,
   xe as useCommon,
   vo as useHeaderBar,
-  Aa as useLayoutHeight,
+  Ta as useLayoutHeight,
   te as useSettingStore,
   Ie as useTheme,
   Oe as useWorktabStore,
