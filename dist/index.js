@@ -21,7 +21,7 @@ const Pt = { theme: { title: "主题风格", list: ["浅色", "深色", "系统"
   search: jt,
   topBar: Yt,
   common: Qt
-}, Zt = "1", en = w("zh");
+}, Zt = "2", en = w("zh");
 let me = {};
 const tn = (e) => {
   me = {
