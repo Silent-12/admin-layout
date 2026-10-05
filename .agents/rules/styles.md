@@ -6,6 +6,8 @@
 
 - 样式入口由包统一导出，宿主在业务样式**之前**引入；包内组件样式写在 SFC `<style scoped lang="scss">` 或同名 `style.scss` / `theme.scss`。
 
+- 包内布局骨架类（`.ao-page-view`、`.ao-full-height` 等）的盒模型与高度由包自身声明保证，不依赖宿主 reset：宿主未引入全局 `* { box-sizing: border-box }` 时骨架仍须表现正确。这类规则属于骨架自洽，不适用「reset 与 Element Plus 基础样式由宿主承担」（见 `src/styles/index.scss`）。playground 引入的宿主 reset 镜像会覆盖同名效果，验证此类规则需在未引入 reset 的环境中进行。
+
 - 样式中的颜色必须引用 CSS 变量（`:root` 亮色与 `.dark` 暗色成对定义），变量清单见 [CSS 变量速查](../references/css-variables.md)；新增变量定义在本包 `theme.scss` 的 `:root` 与 `.dark` 中成对新增，并同时评估对宿主业务页面的影响（该变量会随包下发到所有下游系统）。
 
 - Vue 组件 `<style scoped>` 的 class 命名：一个顶层模块 class 作为作用域入口 + 内部简短语义命名（`left`/`right`/`header`/`body`/`item`/`title` 等）；仅跨组件复用、Element Plus 深度覆盖等场景使用完整 BEM。

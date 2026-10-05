@@ -11,6 +11,8 @@ import '@ao/admin-components/styles.css'
 // 源码链接开发：底座样式直接引包内样式入口
 import '../../src/styles/index.scss'
 import 'element-plus/dist/index.css'
+// 宿主全局重置样式（重置 margin/padding 与美化滚动条）
+import './styles/reset.scss'
 import App from './App.vue'
 import PageA from './views/PageA.vue'
 import PageB from './views/PageB.vue'

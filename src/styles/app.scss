@@ -173,6 +173,12 @@
   }
 }
 
+// 页面路由视图根节点：盒模型由包内骨架自身保证，不依赖宿主 reset
+// （避免宿主未引入全局 reset 时，页面根节点内边距撑破视口全高，使 #app-main 出现多余滚动条）
+.ao-page-view {
+  box-sizing: border-box;
+}
+
 // 徽章样式
 .ao-badge {
   position: absolute;

@@ -4,6 +4,37 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>admin-layout playground</title>
+    <style>
+      /* 防止页面刷新时白屏的初始样式与暗色画布适配 */
+      html {
+        background-color: #ffffff;
+      }
+
+      html.dark {
+        background-color: #161618;
+      }
+    </style>
+    <script>
+      // 初始化 html class 主题属性，避免首屏亮暗闪烁。
+      // 读取键与宿主 admin-template-vue 保持一致（sys-theme，即包内 StorageConfig.THEME_KEY，
+      // 仅在用户显式切换主题时写入）；未写入过偏好时按系统偏好取值，与默认的 auto 主题模式一致。
+      ;(function () {
+        try {
+          if (typeof Storage === 'undefined' || !window.localStorage) {
+            return
+          }
+          const themeType = localStorage.getItem('sys-theme')
+          const isDark = themeType
+            ? themeType === 'dark'
+            : window.matchMedia('(prefers-color-scheme: dark)').matches
+          if (isDark) {
+            document.documentElement.classList.add('dark')
+          }
+        } catch (e) {
+          console.warn('Failed to apply initial theme:', e)
+        }
+      })()
+    </script>
   </head>
   <body>
     <div id="app"></div>
