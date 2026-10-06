@@ -16,6 +16,7 @@ import './styles/reset.scss'
 import App from './App.vue'
 import PageA from './views/PageA.vue'
 import PageB from './views/PageB.vue'
+import PageTable from './views/PageTable.vue'
 
 const app = createApp(App)
 
@@ -64,7 +65,8 @@ const router = createRouter({
       children: [
         { path: '', redirect: '/page-a' },
         { path: 'page-a', component: PageA, meta: { title: '页面 A', keepAlive: true } },
-        { path: 'page-b', component: PageB, meta: { title: '页面 B' } }
+        { path: 'page-b', component: PageB, meta: { title: '页面 B' } },
+        { path: 'page-table', component: PageTable, meta: { title: '贴边表格' } }
       ]
     }
   ]
@@ -84,6 +86,12 @@ const menuList: AppRouteRecord[] = [
     name: 'PageB',
     component: 'page-b',
     meta: { title: '页面 B', icon: 'ri:file-list-3-line' }
+  },
+  {
+    path: '/page-table',
+    name: 'PageTable',
+    component: 'page-table',
+    meta: { title: '贴边表格', icon: 'ri:table-line' }
   }
 ] as unknown as AppRouteRecord[]
 

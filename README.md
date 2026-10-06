@@ -49,6 +49,26 @@ app.use(AdminLayout, {
 - 包内 UI 状态 store 仅 `setting` / `app` / `worktab`；`worktab` 由Admin模板路由守卫写入（包导出 `useWorktabStore`）。
 - 菜单数据、用户信息、业务页面、登录页、路由守卫均属于Admin模板。
 
+## 贴边表格页面
+
+无外边距、内边距的路由页面可在根容器添加 `page-flush-table`，并在直接子级主体 `AoTable` 添加 `page-main-table`：
+
+```vue
+<template>
+  <div class="ao-full-height page-flush-table">
+    <AoTable class="page-main-table" :data="rows" :columns="columns">
+      <template #header-left>用户管理</template>
+    </AoTable>
+  </div>
+</template>
+```
+
+布局统一处理相接的边框：顶栏存在、内容头部为空且表格为页面首个元素时，移除表格上边框；宽度大于 800px 且实际渲染侧栏时，移除表格左边框。移动端浮层侧栏不替代左边框，`isFullPage` 全屏路由不参与边框衔接。表格仍须处于 `is-integrated` 集成模式；组件默认外框及内部搜索分隔线保持不变。
+
+该约定依赖 `@ao/admin-components` v3 及以上版本提供的表格集成外框；低版本下表格本身没有外框，标记不会产生任何效果。
+
+这两个类名是布局接入约定，不为页面设置间距。独立卡片、有间距的页面、嵌套表格和弹窗表格不添加此标记；页面不要重复编写边框覆盖。顶栏或内容头部结构调整时，应同步维护 `src/styles/app.scss` 中的衔接选择器，并在 playground 的「贴边表格」页回归亮色与暗色表现。
+
 ## 升级
 
 ```bash

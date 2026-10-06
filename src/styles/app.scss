@@ -190,6 +190,32 @@
   box-sizing: border-box;
 }
 
+// 贴边表格页：页面声明 page-flush-table，直接子级主体 AoTable 声明 page-main-table。
+// 只消除与布局相接的外框，不影响独立卡片、嵌套表格、弹窗和全屏路由页。
+.app-layout {
+  // 顶栏存在且内容头部为空时，由顶栏绘制上方分隔线；表格前有内容时保留上边框。
+  #app-header:has(> .header-bar)
+    + #app-content
+    > .layout-content:not(.layout-content--full-page)
+    > #app-content-header:empty
+    + .ao-page-view.page-flush-table
+    > .ao-table-root.is-integrated.page-main-table:first-child {
+    border-top: 0;
+  }
+
+  // 与侧栏改为浮层的 800px 断点一致；空菜单不渲染侧栏，也不移除表格左边框。
+  @media (width > 800px) {
+    &:has(> #app-sidebar > .layout-sidebar)
+      > #app-main
+      > #app-content
+      > .layout-content:not(.layout-content--full-page)
+      > .ao-page-view.page-flush-table
+      > .ao-table-root.is-integrated.page-main-table {
+      border-left: 0;
+    }
+  }
+}
+
 // 徽章样式
 .ao-badge {
   position: absolute;

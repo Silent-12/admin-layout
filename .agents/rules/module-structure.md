@@ -31,6 +31,8 @@ dist/          # 构建产物（提交进仓库）
 
 - **DOM/CSS 契约内聚**：`#app-sidebar` / `#app-main` / `#app-header` / `#app-content` / `#app-global` 锚点、`--ao-header-height` 等 CSS 变量的生产与消费都必须在本包内完成；修改锚点 ID 或变量名属于破坏性变更，需同步 README 契约并升版本。
 
+- 贴边表格页面通过根容器 `page-flush-table` 与直接子级主体 `AoTable` 的 `page-main-table` 类名接入；重复外框统一在 `src/styles/app.scss` 处理，按顶栏、内容头部、侧栏是否实际相接及移动端断点限定作用范围，排除全屏路由。有间距页面、独立卡片、嵌套与弹窗表格不得套用此约定，示例见 README。
+
 - 布局与业务解耦约定：菜单树、用户信息、业务页面组件属于Admin模板；本包只渲染注入的数据与 `<RouterView>` 内容区。`RoutePath.LayoutComponent` 字符串约定与Admin模板路由装配保持一致，修改需升版本。
 
 ## playground 约定
