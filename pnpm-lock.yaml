@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@ao/admin-components':
-        specifier: https://github.com/Silent-12/admin-components.git#v1
-        version: git+https://github.com/Silent-12/admin-components.git#246a74d8d543a3432be9348746d82c162cfa0bd1(@types/sortablejs@1.15.9)(@vueuse/core@13.9.0(vue@3.5.43(typescript@5.6.3)))(element-plus@2.14.7(vue@3.5.43(typescript@5.6.3)))(pinia-plugin-persistedstate@4.7.1(pinia@3.0.3(typescript@5.6.3)(vue@3.5.43(typescript@5.6.3))))(pinia@3.0.3(typescript@5.6.3)(vue@3.5.43(typescript@5.6.3)))(vue-i18n@9.14.5(vue@3.5.43(typescript@5.6.3)))(vue@3.5.43(typescript@5.6.3))
+        specifier: https://github.com/Silent-12/admin-components.git#v3
+        version: https://codeload.github.com/Silent-12/admin-components/tar.gz/c91aee16af07501f4c1c8e6825b7f568562beeb8(@types/sortablejs@1.15.9)(@vueuse/core@13.9.0(vue@3.5.43(typescript@5.6.3)))(element-plus@2.14.7(vue@3.5.43(typescript@5.6.3)))(pinia-plugin-persistedstate@4.7.1(pinia@3.0.3(typescript@5.6.3)(vue@3.5.43(typescript@5.6.3))))(pinia@3.0.3(typescript@5.6.3)(vue@3.5.43(typescript@5.6.3)))(vue-i18n@9.14.5(vue@3.5.43(typescript@5.6.3)))(vue@3.5.43(typescript@5.6.3))
       nprogress:
         specifier: ^0.2.0
         version: 0.2.0
@@ -84,8 +84,8 @@ importers:
 
 packages:
 
-  '@ao/admin-components@git+https://github.com/Silent-12/admin-components.git#246a74d8d543a3432be9348746d82c162cfa0bd1':
-    resolution: {commit: 246a74d8d543a3432be9348746d82c162cfa0bd1, repo: https://github.com/Silent-12/admin-components.git, type: git}
+  '@ao/admin-components@https://codeload.github.com/Silent-12/admin-components/tar.gz/c91aee16af07501f4c1c8e6825b7f568562beeb8':
+    resolution: {gitHosted: true, tarball: https://codeload.github.com/Silent-12/admin-components/tar.gz/c91aee16af07501f4c1c8e6825b7f568562beeb8}
     version: 0.0.0
     engines: {node: '>=20.19.0', pnpm: '>=8.8.0'}
     peerDependencies:
@@ -1820,7 +1820,7 @@ packages:
 
 snapshots:
 
-  '@ao/admin-components@git+https://github.com/Silent-12/admin-components.git#246a74d8d543a3432be9348746d82c162cfa0bd1(@types/sortablejs@1.15.9)(@vueuse/core@13.9.0(vue@3.5.43(typescript@5.6.3)))(element-plus@2.14.7(vue@3.5.43(typescript@5.6.3)))(pinia-plugin-persistedstate@4.7.1(pinia@3.0.3(typescript@5.6.3)(vue@3.5.43(typescript@5.6.3))))(pinia@3.0.3(typescript@5.6.3)(vue@3.5.43(typescript@5.6.3)))(vue-i18n@9.14.5(vue@3.5.43(typescript@5.6.3)))(vue@3.5.43(typescript@5.6.3))':
+  '@ao/admin-components@https://codeload.github.com/Silent-12/admin-components/tar.gz/c91aee16af07501f4c1c8e6825b7f568562beeb8(@types/sortablejs@1.15.9)(@vueuse/core@13.9.0(vue@3.5.43(typescript@5.6.3)))(element-plus@2.14.7(vue@3.5.43(typescript@5.6.3)))(pinia-plugin-persistedstate@4.7.1(pinia@3.0.3(typescript@5.6.3)(vue@3.5.43(typescript@5.6.3))))(pinia@3.0.3(typescript@5.6.3)(vue@3.5.43(typescript@5.6.3)))(vue-i18n@9.14.5(vue@3.5.43(typescript@5.6.3)))(vue@3.5.43(typescript@5.6.3))':
     dependencies:
       '@element-plus/icons-vue': 2.3.2(vue@3.5.43(typescript@5.6.3))
       '@iconify/vue': 5.0.3(vue@3.5.43(typescript@5.6.3))
