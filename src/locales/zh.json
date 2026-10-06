@@ -54,16 +54,6 @@
   "topBar": {
     "search": {
       "title": "搜索"
-    },
-    "user": {
-      "userCenter": "个人中心",
-      "logout": "退出登录"
     }
-  },
-  "common": {
-    "tips": "提示",
-    "cancel": "取消",
-    "confirm": "确定",
-    "logOutTips": "您是否要退出登录?"
   }
 }

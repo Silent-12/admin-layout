@@ -12,9 +12,12 @@
 
 - 布局组件内禁止 import 任何Admin模板业务资源：`user`/`menu` 业务 store、`@/api`、`@/views`（业务页面）、`@/locales`、`@/utils/navigation` 的全局 router 单例。Admin模板数据与能力一律通过 `install` 注入。
 
-- **注入契约（install options）**：`i18n`（Admin模板 vue-i18n 实例，包 merge 内置语言包）、`router`（替代全局 router 单例）、`menuSource`（响应式 menuList / applicationList / homePath）、`userInfo`（只读用户信息）、`onLogout`（登出回调，替代 store 内部耦合路由守卫）、`config`（systemName 等参数化配置）。扩展注入项必须更新本文件与 README。
+- **注入契约（install options）**：`i18n`（Admin模板 vue-i18n 实例，包 merge 内置语言包）、`router`（替代全局 router 单例）、`menuSource`（响应式 menuList / applicationList / homePath）、`language` / `onLanguageChange`（语言引用与切换回调）、`config`（systemName 等参数化配置）。**用户域不注入**：用户信息与登出由Admin模板自行持有，经顶部栏 `#user-avatar` 插槽内容消费。扩展注入项必须更新本文件与 README。
 
-- **插槽契约（AppLayout）**：`#sidebar-header` 作用域插槽（参数 `menuOpen`、`theme`，类型 `SidebarHeaderSlotProps`）用于Admin模板提供侧栏顶部区域内容；未传插槽时该区域留空，包内不再渲染默认 Logo 与系统名称。插槽名与参数属于公开契约，修改需升版本并同步本文件与 README。
+- **插槽契约（AppLayout）**：
+  - `#sidebar-header` 作用域插槽（参数 `menuOpen`、`theme`，类型 `SidebarHeaderSlotProps`）用于Admin模板提供侧栏顶部区域内容；未传插槽时该区域留空，包内不再渲染默认 Logo 与系统名称。
+  - `#user-avatar` 插槽（无插槽参数）用于Admin模板 / 业务组件提供顶部栏右侧用户头像区的头像内容与交互（下拉菜单、用户中心、登出等）；未传插槽时不渲染容器 `.header-bar__user-avatar`（不残留尾部空白），包内不再内置用户菜单与头像。容器仅保留间距规范（`margin-right: 0.625rem`，≤39.99rem 为 `16px`，`flex-shrink: 0` 且垂直居中）。头像尺寸 / 圆角 / 指针样式与用户数据、登出逻辑均归业务侧（包内无用户域注入，也不再导出 `getUserInfo` / `logout`）。
+  - 插槽名与参数属于公开契约，修改需升版本并同步本文件与 README。
 
 - **顶部区域内边距与裁切**：展开态 `.header` 左右内边距取菜单项同级值（`--el-menu-base-level-padding`，默认 20px），并由内层 `.header__inner` 承担溢出裁切，使超长内容在内容盒边界被裁切、不贴左右边缘（若只裁 `.header`，溢出会画进内边距区域而贴边）；折叠态取消左右内边距并居中。省略号需由Admin模板侧实现（插槽根元素 `min-width: 0` + 文本元素 `overflow: hidden` / `text-overflow: ellipsis` / `white-space: nowrap`）。
 
@@ -28,7 +31,7 @@
 
 - playground 模拟Admin模板注入（菜单数据、用户信息、登出回调、i18n），修改布局后在 playground 验证侧栏、头部、内容区路由视图、worktab、全局搜索（Ctrl+K）、设置面板、通知。
 
-- 包内文案新增/修改时同步 `src/locales/zh.json` 与 `en.json`；Admin模板业务文案（菜单标题等）不属于本包。
+- 包内文案新增/修改时同步 `src/locales/zh.json` 与 `en.json`；Admin模板业务文案（菜单标题等）不属于本包。包内语言包合并进Admin模板 i18n 实例的顶层命名空间为 `setting` / `worktab` / `notice` / `search` / `topBar`，删除或重命名 key 属对外可见的收缩，需同步本文件与 README。
 
 ## 完成检查
 

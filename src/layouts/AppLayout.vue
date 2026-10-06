@@ -12,7 +12,12 @@
 
     <main id="app-main">
       <div id="app-header">
-        <AoHeaderBar />
+        <AoHeaderBar>
+          <!-- 转发Admin模板 / 业务组件的顶部栏用户头像内容；未传入时不转发该插槽，包内不会渲染占位容器 -->
+          <template v-if="$slots['user-avatar']" #user-avatar>
+            <slot name="user-avatar" />
+          </template>
+        </AoHeaderBar>
       </div>
       <div id="app-content">
         <AoPageContent />
@@ -40,6 +45,12 @@
    */
   defineSlots<{
     'sidebar-header'?: (props: SidebarHeaderSlotProps) => any
+    /**
+     * 顶部栏用户头像插槽
+     * @description 向Admin模板 / 业务组件开放顶部栏右侧用户头像区的渲染权，无插槽参数；
+     * 头像内容与交互逻辑由业务侧负责，未传入时该区域留空，包内仅保留间距规范。
+     */
+    'user-avatar'?: () => any
   }>()
 </script>
 

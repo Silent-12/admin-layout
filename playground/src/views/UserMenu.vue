@@ -1,4 +1,4 @@
-<!-- 用户菜单 -->
+<!-- 顶部栏用户头像区（业务组件示例）：演示业务侧如何通过 #user-avatar 插槽接管头像内容与交互 -->
 <template>
   <ElPopover
     ref="userMenuPopover"
@@ -12,25 +12,25 @@
     popper-style="padding: 5px 16px;"
   >
     <template #reference>
-      <img class="user-avatar" src="https://dummyimage.com/160x160.png" alt="avatar" />
+      <img class="user-avatar" :src="userAvatar" alt="avatar" />
     </template>
     <template #default>
       <div class="user-menu">
         <div class="user-menu__header">
-          <img class="user-menu__avatar" src="https://dummyimage.com/160x160.png" />
+          <img class="user-menu__avatar" :src="userAvatar" />
           <div class="user-menu__info">
-            <span class="user-menu__name">{{ userInfo?.userName }}</span>
-            <span class="user-menu__email">{{ userInfo?.email }}</span>
+            <span class="user-menu__name">{{ userName }}</span>
+            <span class="user-menu__email">{{ userEmail }}</span>
           </div>
         </div>
         <ul class="user-menu__list">
           <li class="btn-item" @click="showDevTip">
             <AoSvgIcon icon="ri:user-3-line" />
-            <span>{{ $t('topBar.user.userCenter') }}</span>
+            <span>{{ $t('pgUser.userCenter') }}</span>
           </li>
           <div class="user-menu__divider"></div>
           <div class="log-out" @click="loginOut">
-            {{ $t('topBar.user.logout') }}
+            {{ $t('pgUser.logout') }}
           </div>
         </ul>
       </div>
@@ -40,23 +40,47 @@
 
 <script setup lang="ts">
   import { AoSvgIcon } from '@ao/admin-components'
+  import { ElMessage, ElMessageBox, ElPopover } from 'element-plus'
   import { computed, ref } from 'vue'
-  import { ElPopover } from 'element-plus'
   import { useI18n } from 'vue-i18n'
-  import { ElMessage, ElMessageBox } from 'element-plus'
-  import { getUserInfo as getLayoutUserInfo, logout } from '../../../install/context'
 
-  defineOptions({ name: 'AoUserMenu' })
+  defineOptions({ name: 'PlaygroundUserMenu' })
 
-  // 用户信息（Admin模板注入，只读展示）
-  const userInfo = computed(() => getLayoutUserInfo())
+  /**
+   * 用户信息
+   * @description 由宿主 / Admin模板经插槽传入；布局包不再注入用户域数据。
+   */
+  const props = defineProps<{
+    user?: {
+      userName?: string
+      email?: string
+      avatar?: string
+    }
+  }>()
 
+  /**
+   * 登出事件
+   * @description 弹层内完成确认交互后抛出，实际登出（清会话 / 跳登录页）由宿主执行。
+   */
+  const emit = defineEmits<{
+    logout: []
+  }>()
+
+  // 文案由业务侧自行维护（示例用 playground 本地语言包，不复用布局包文案）
   const { t } = useI18n()
 
+  // 头像地址（未提供时回退占位图）
+  const userAvatar = computed(() => props.user?.avatar || 'https://dummyimage.com/160x160.png')
+  // 用户名 / 邮箱（仅展示）
+  const userName = computed(() => props.user?.userName)
+  const userEmail = computed(() => props.user?.email)
+
+  // 用户菜单弹层组件引用
   const userMenuPopover = ref()
 
   /**
-   * 开发中提示
+   * 打开用户中心（演示占位）
+   * @return {void} 无返回值
    */
   const showDevTip = (): void => {
     ElMessage.info('正在开发中')
@@ -64,22 +88,24 @@
 
   /**
    * 用户登出确认
+   * @return {void} 无返回值
    */
   const loginOut = (): void => {
     closeUserMenu()
     setTimeout(() => {
-      ElMessageBox.confirm(t('common.logOutTips'), t('common.tips'), {
-        confirmButtonText: t('common.confirm'),
-        cancelButtonText: t('common.cancel'),
+      ElMessageBox.confirm(t('pgUser.logOutTips'), t('pgUser.tips'), {
+        confirmButtonText: t('pgUser.confirm'),
+        cancelButtonText: t('pgUser.cancel'),
         customClass: 'login-out-dialog'
       }).then(() => {
-        logout()
+        emit('logout')
       })
     }, 200)
   }
 
   /**
    * 关闭用户菜单弹出层
+   * @return {void} 无返回值
    */
   const closeUserMenu = (): void => {
     setTimeout(() => {
@@ -89,17 +115,15 @@
 </script>
 
 <style scoped lang="scss">
-  // 头像（弹层触发器）
+  // 头像（弹层触发器）：尺寸与圆角属于业务侧展示规范，右间距由布局包容器提供
   .user-avatar {
     width: 2.125rem;
     height: 2.125rem;
-    margin-right: 0.625rem;
     cursor: pointer;
     border-radius: 9999px;
     @media (width <= 39.99rem) {
       width: 1.625rem;
       height: 1.625rem;
-      margin-right: 16px;
     }
   }
 

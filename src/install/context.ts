@@ -13,16 +13,6 @@ import type { AppRouteRecord } from '../types/router'
 /** 默认语言引用（Admin模板未注入时兜底，仅内存生效） */
 const defaultLanguageRef = ref<string>('zh')
 
-/** Admin模板用户信息的最小展示结构 */
-export interface LayoutUserInfo {
-  /** 用户名 / 昵称 */
-  username?: string
-  /** 头像地址 */
-  avatar?: string
-  /** 其他展示字段 */
-  [key: string]: unknown
-}
-
 /** 语言切换回调：Admin模板负责同步 i18n locale 与持久化 */
 export type LanguageChangeHandler = (lang: string) => void
 
@@ -46,14 +36,10 @@ export interface AdminLayoutOptions {
   router?: Router
   /** 菜单数据（响应式引用或 getter），替代Admin模板 menu store */
   menuSource?: () => MenuSource
-  /** 用户信息（只读展示），替代Admin模板 user store */
-  userInfo?: () => LayoutUserInfo | undefined
   /** 语言响应式引用（Admin模板传入 store 中的 ref），替代Admin模板 user store 的 language */
   language?: Ref<string>
   /** 语言切换回调（替代Admin模板 user store 的 setLanguage） */
   onLanguageChange?: LanguageChangeHandler
-  /** 登出回调（替代Admin模板 user store 的 logOut 及其路由守卫耦合） */
-  onLogout?: () => void | Promise<void>
   /** 参数化配置 */
   config?: {
     /** 系统名称，用于浏览器页面标题 */
@@ -65,10 +51,8 @@ interface LayoutContext {
   router?: Router
   i18n?: { global: Composer }
   menuSource?: () => MenuSource
-  userInfo?: () => LayoutUserInfo | undefined
   language?: Ref<string>
   onLanguageChange?: LanguageChangeHandler
-  onLogout?: () => void | Promise<void>
   config?: AdminLayoutOptions['config']
 }
 
@@ -83,10 +67,8 @@ export const setLayoutContext = (options: AdminLayoutOptions): void => {
     router: options.router,
     i18n: options.i18n as LayoutContext['i18n'],
     menuSource: options.menuSource,
-    userInfo: options.userInfo,
     language: options.language,
     onLanguageChange: options.onLanguageChange,
-    onLogout: options.onLogout,
     config: options.config
   }
 }
@@ -119,12 +101,6 @@ export const getMenuSource = (): MenuSource => {
 }
 
 /**
- * @description 获取用户信息，未注入时返回 undefined。
- * @return 用户信息。
- */
-export const getUserInfo = (): LayoutUserInfo | undefined => context.userInfo?.()
-
-/**
  * @description 获取语言响应式引用，未注入时提供仅内存的默认引用。
  * @return 语言 ref。
  */
@@ -138,17 +114,6 @@ export const getLanguageRef = (): Ref<string> => {
  */
 export const getLanguageChangeHandler = (): LanguageChangeHandler | undefined =>
   context.onLanguageChange
-
-/**
- * @description 执行Admin模板登出回调，未注入时仅告警。
- */
-export const logout = (): void => {
-  if (context.onLogout) {
-    void context.onLogout()
-  } else {
-    console.warn('[ao-admin-layout] 未注入 onLogout，登出操作被忽略')
-  }
-}
 
 /**
  * @description 获取系统名称（install 配置优先，回退环境变量）。

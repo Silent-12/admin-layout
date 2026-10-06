@@ -95,8 +95,10 @@
           :icon="isDark ? 'ri:sun-fill' : 'ri:moon-line'"
         />
 
-        <!-- 用户头像、菜单 -->
-        <AoUserMenu />
+        <!-- 用户头像区：内容与交互由Admin模板 / 业务组件经 #user-avatar 插槽提供；未传插槽时不渲染该容器，避免残留尾部间距 -->
+        <div v-if="$slots['user-avatar']" class="header-bar__user-avatar">
+          <slot name="user-avatar" />
+        </div>
       </div>
     </div>
 
@@ -128,9 +130,17 @@
   import { themeAnimation } from '../../utils/ui/animation'
   import { useCommon } from '../../hooks/core/useCommon'
   import { useHeaderBar } from '../../hooks/core/useHeaderBar'
-  import AoUserMenu from './widget/AoUserMenu.vue'
 
   defineOptions({ name: 'AoHeaderBar' })
+
+  /**
+   * 顶部栏用户头像插槽
+   * @description 向Admin模板 / 业务组件开放顶部栏右侧用户头像区的渲染权，头像内容与交互逻辑均由业务侧负责；
+   * 未传入插槽内容时该区域留空，包内仅保留间距规范。
+   */
+  defineSlots<{
+    'user-avatar'?: () => any
+  }>()
 
   // 检测操作系统类型
   const isWindows = navigator.userAgent.includes('Windows')
@@ -144,7 +154,6 @@
   const settingStore = useSettingStore()
   // 应用状态管理
   const appStore = useAppStore()
-  // 用户状态管理
   // 顶部栏功能配置
   const {
     shouldShowMenuButton,
@@ -160,8 +169,7 @@
 
   // 状态管理响应式引用
   const { menuOpen, isDark } = storeToRefs(settingStore)
-  // 用户语言设置
-  //  通知面板显示状态
+  // 通知面板显示状态
   const showNotice = ref(false)
   // 主题切换动画
   const { isFullscreen, toggle: toggleFullscreen } = useFullscreen()
@@ -416,6 +424,16 @@
     // 通知按钮
     &__notice-btn {
       position: relative;
+    }
+    // 用户头像区：仅保留间距规范，头像内容与交互由业务侧经 #user-avatar 插槽提供
+    &__user-avatar {
+      display: flex;
+      flex-shrink: 0;
+      align-items: center;
+      margin-right: 0.625rem;
+      @media (width <= 39.99rem) {
+        margin-right: 16px;
+      }
     }
   }
 

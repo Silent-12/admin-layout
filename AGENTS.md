@@ -17,7 +17,7 @@
 
 # 核心约定
 
-- **包边界（最高优先级）**：布局组件内禁止依赖Admin模板业务资源（user/menu 业务 store、api、views 业务页面、locales、全局 router 单例）；Admin模板数据与能力通过 `install` 注入（`i18n`、`router`、`menuSource`、`userInfo`、`onLogout`、`config`）。下游只允许从包入口 `@ao/admin-layout` 导入，禁止深引 `src` 内部路径。
+- **包边界（最高优先级）**：布局组件内禁止依赖Admin模板业务资源（user/menu 业务 store、api、views 业务页面、locales、全局 router 单例）；Admin模板数据与能力通过 `install` 注入（`i18n`、`router`、`menuSource`、`language`、`onLanguageChange`、`config`），**用户信息与登出不注入**（由Admin模板持有，经顶部栏 `#user-avatar` 插槽自行渲染）。下游只允许从包入口 `@ao/admin-layout` 导入，禁止深引 `src` 内部路径。
 - **UI 状态 store 三件套随包走**：`setting`、`app`、`worktab`；`worktab` 由Admin模板路由守卫写入，包导出 `useWorktabStore`。禁止在包内定义Admin模板业务 store。
 - **DOM/CSS 契约内聚**：布局锚点 ID（`#app-main` 等）与 `--ao-*` CSS 变量的生产消费都在本包内；锚点与变量名是 admin-components 滚动能力及Admin模板页面的隐式契约，修改属于破坏性变更。
 - 依赖纪律：`vue`、`element-plus`、`pinia`、`vue-i18n`、`@vueuse/core`、`pinia-plugin-persistedstate` 为 peerDependencies；`@ao/admin-components` 为 git tag 依赖。

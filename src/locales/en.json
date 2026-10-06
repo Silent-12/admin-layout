@@ -54,16 +54,6 @@
   "topBar": {
     "search": {
       "title": "Search"
-    },
-    "user": {
-      "userCenter": "User center",
-      "logout": "Log out"
     }
-  },
-  "common": {
-    "tips": "Prompt",
-    "cancel": "Cancel",
-    "confirm": "Confirm",
-    "logOutTips": "Do you want to log out?"
   }
 }

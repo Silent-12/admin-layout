@@ -2,15 +2,6 @@ import { Ref } from 'vue';
 import { Router } from 'vue-router';
 import { Composer, I18n } from 'vue-i18n';
 import { AppRouteRecord } from '../types/router';
-/** Admin模板用户信息的最小展示结构 */
-export interface LayoutUserInfo {
-    /** 用户名 / 昵称 */
-    username?: string;
-    /** 头像地址 */
-    avatar?: string;
-    /** 其他展示字段 */
-    [key: string]: unknown;
-}
 /** 语言切换回调：Admin模板负责同步 i18n locale 与持久化 */
 export type LanguageChangeHandler = (lang: string) => void;
 /** 菜单数据来源：Admin模板路由装配完成后注入响应式数据 */
@@ -34,14 +25,10 @@ export interface AdminLayoutOptions {
     router?: Router;
     /** 菜单数据（响应式引用或 getter），替代Admin模板 menu store */
     menuSource?: () => MenuSource;
-    /** 用户信息（只读展示），替代Admin模板 user store */
-    userInfo?: () => LayoutUserInfo | undefined;
     /** 语言响应式引用（Admin模板传入 store 中的 ref），替代Admin模板 user store 的 language */
     language?: Ref<string>;
     /** 语言切换回调（替代Admin模板 user store 的 setLanguage） */
     onLanguageChange?: LanguageChangeHandler;
-    /** 登出回调（替代Admin模板 user store 的 logOut 及其路由守卫耦合） */
-    onLogout?: () => void | Promise<void>;
     /** 参数化配置 */
     config?: {
         /** 系统名称，用于浏览器页面标题 */
@@ -71,11 +58,6 @@ export declare const getContextI18n: () => {
  */
 export declare const getMenuSource: () => MenuSource;
 /**
- * @description 获取用户信息，未注入时返回 undefined。
- * @return 用户信息。
- */
-export declare const getUserInfo: () => LayoutUserInfo | undefined;
-/**
  * @description 获取语言响应式引用，未注入时提供仅内存的默认引用。
  * @return 语言 ref。
  */
@@ -85,10 +67,6 @@ export declare const getLanguageRef: () => Ref<string>;
  * @return 语言切换回调。
  */
 export declare const getLanguageChangeHandler: () => LanguageChangeHandler | undefined;
-/**
- * @description 执行Admin模板登出回调，未注入时仅告警。
- */
-export declare const logout: () => void;
 /**
  * @description 获取系统名称（install 配置优先，回退环境变量）。
  * @return 系统名称。

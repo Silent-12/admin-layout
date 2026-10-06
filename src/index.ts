@@ -19,12 +19,13 @@
  *     currentApplication: menuStore.currentApplication,
  *     homePath: menuStore.getHomePath()
  *   }),
- *   userInfo: () => userStore.info,
- *   language: { get: () => userStore.language, set: (v) => userStore.setLanguage(v) },
- *   onLogout: () => userStore.logOut(),
+ *   language: toRef(userStore, 'language'),
+ *   onLanguageChange: (lang) => userStore.setLanguage(lang),
  *   config: { systemName: '后台管理系统' }
  * })
  * ```
+ *
+ * 用户信息与登出属于业务域：布局包不再注入，由Admin模板自行持有，并通过 `#user-avatar` 插槽渲染。
  */
 import type { App, Plugin } from 'vue'
 import './styles/index.scss'
@@ -62,10 +63,5 @@ export { formatMenuTitle, setPageTitle } from './utils/router'
 export { handleMenuJump, openExternalLink } from './utils/navigation/jump'
 export { getFirstMenuPath, findApplicationByPath } from './utils/navigation/route'
 export * from './install/context'
-export type {
-  AdminLayoutOptions,
-  MenuSource,
-  LayoutUserInfo,
-  LanguageChangeHandler
-} from './install/context'
+export type { AdminLayoutOptions, MenuSource, LanguageChangeHandler } from './install/context'
 export type { SidebarHeaderSlotProps } from './types/layout'

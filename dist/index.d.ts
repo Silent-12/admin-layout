@@ -19,5 +19,5 @@ export { formatMenuTitle, setPageTitle } from './utils/router';
 export { handleMenuJump, openExternalLink } from './utils/navigation/jump';
 export { getFirstMenuPath, findApplicationByPath } from './utils/navigation/route';
 export * from './install/context';
-export type { AdminLayoutOptions, MenuSource, LayoutUserInfo, LanguageChangeHandler } from './install/context';
+export type { AdminLayoutOptions, MenuSource, LanguageChangeHandler } from './install/context';
 export type { SidebarHeaderSlotProps } from './types/layout';

@@ -24,12 +24,33 @@ const pinia = createPinia()
 pinia.use(piniaPluginPersistedstate)
 app.use(pinia)
 
-// i18n（布局包语言包由 install 合并）
+// i18n（布局包语言包由 install 合并；pgUser.* 为 playground 业务侧自有文案，演示业务文案不属于布局包）
 const i18n = createI18n({
   legacy: false,
   locale: 'zh',
   fallbackLocale: 'en',
-  messages: { zh: {}, en: {} }
+  messages: {
+    zh: {
+      pgUser: {
+        userCenter: '个人中心',
+        logout: '退出登录',
+        logOutTips: '您是否要退出登录?',
+        tips: '提示',
+        confirm: '确定',
+        cancel: '取消'
+      }
+    },
+    en: {
+      pgUser: {
+        userCenter: 'User center',
+        logout: 'Log out',
+        logOutTips: 'Do you want to log out?',
+        tips: 'Prompt',
+        confirm: 'Confirm',
+        cancel: 'Cancel'
+      }
+    }
+  }
 })
 app.use(i18n)
 
@@ -80,13 +101,11 @@ app.use(AdminLayout, {
     currentApplication: undefined,
     homePath: '/page-a'
   }),
-  userInfo: () => ({ userName: '演示用户', email: 'demo@example.com' }),
   language,
   onLanguageChange: (lang) => {
     language.value = lang
     i18n.global.locale.value = lang
   },
-  onLogout: () => console.info('logout'),
   config: { systemName: '布局包演示系统' }
 })
 
