@@ -19,7 +19,7 @@ const Pt = { theme: { title: "主题风格", list: ["浅色", "深色", "系统"
   notice: Xt,
   search: zt,
   topBar: jt
-}, Qt = "3", Jt = T("zh");
+}, Qt = "4", Jt = T("zh");
 let be = {};
 const Zt = (e) => {
   be = {
