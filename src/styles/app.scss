@@ -64,8 +64,13 @@
   }
 
   .is-selected {
-    font-weight: 600;
+    font-weight: 400;
     background-color: var(--theme-color) !important;
+
+    &:hover,
+    &:focus {
+      background-color: var(--theme-color) !important;
+    }
   }
 }
 
