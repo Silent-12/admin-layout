@@ -33,6 +33,8 @@
   /* 背景色 */
   --default-bg-color: #ffffff;
   --default-box-color: #ffffff;
+  /* 表头背景开关启用时的填充色 */
+  --ao-table-header-bg-color: #f5f7f9;
   /* 悬停背景色 */
   --ao-hover-color: #edeff0;
   /* 激活背景色 */
@@ -87,6 +89,8 @@
   /* 背景色 */
   --default-bg-color: #161618;
   --default-box-color: #161618;
+  /* 表头背景开关启用时的填充色 */
+  --ao-table-header-bg-color: var(--el-fill-color-lighter);
   /* 悬停背景色 */
   --ao-hover-color: #252530;
   /* 激活背景色 */

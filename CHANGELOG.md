@@ -1,5 +1,9 @@
 # Changelog
 
+## 未发布
+
+- 主题：新增 `--ao-table-header-bg-color` 表头背景变量，亮色为 `#f5f7f9`，暗色沿用 Element Plus 的浅层填充色。
+
 ## v1
 
 - 首版：从 admin-template-vue 迁移布局骨架（AppLayout、AoSidebarMenu、AoHeaderBar、AoPageContent、AoGlobalComponent、AoGlobalSearch、AoNotification、AoSettingsPanel、AoWorkTab、AoFastEnter、AoMenuRight）
