@@ -7,7 +7,7 @@
 ## 安装
 
 ```bash
-pnpm add @ao/admin-layout@git+https://github.com/Silent-12/admin-layout.git#v8
+pnpm add @ao/admin-layout@git+https://github.com/Silent-12/admin-layout.git#v9
 ```
 
 ## 使用
@@ -33,7 +33,7 @@ app.use(AdminLayout, {
 
 > 用户信息与登出属于业务域，不在注入项内：由Admin模板自行持有，并通过 `#user-avatar` 插槽渲染。
 
-安装成功后控制台会输出 `[ao-admin-layout] v8`，用于确认升级是否生效。
+安装成功后控制台会输出 `[ao-admin-layout] v9`，用于确认升级是否生效。
 
 ## 契约约定
 
@@ -72,10 +72,10 @@ app.use(AdminLayout, {
 ## 升级
 
 ```bash
-# 包仓库发版（版本自动 +1：v8 → v9）
+# 包仓库发版（版本自动 +1：v9 → v10）
 pnpm run release
 
-# 下游升级：package.json 中 tag 号改为 #v9 后
+# 下游升级：package.json 中 tag 号改为 #v10 后
 pnpm install
 ```
 
