@@ -95,6 +95,21 @@ const menuList: AppRouteRecord[] = [
   }
 ] as unknown as AppRouteRecord[]
 
+// 快速入口演示数据：当前系统有明确选中态，另一个系统可打开 playground 中的页面
+const applicationList: AppRouteRecord[] = [
+  {
+    path: '/demo-system',
+    meta: { title: '示例系统' },
+    children: [{ path: '/page-a', component: 'page-a', meta: { title: '页面 A' } }]
+  },
+  {
+    path: '/system-management',
+    meta: { title: '系统管理' },
+    children: [{ path: '/page-b', component: 'page-b', meta: { title: '页面 B' } }]
+  }
+]
+const currentApplication = applicationList[0]
+
 // 语言偏好（模拟Admin模板持有）
 const language = ref<string>('zh')
 
@@ -105,8 +120,8 @@ app.use(AdminLayout, {
   router,
   menuSource: () => ({
     menuList,
-    applicationList: [],
-    currentApplication: undefined,
+    applicationList,
+    currentApplication,
     homePath: '/page-a'
   }),
   language,

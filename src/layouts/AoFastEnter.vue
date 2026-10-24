@@ -1,6 +1,6 @@
 <!-- 顶部业务系统切换器 -->
 <template>
-  <ElDropdown popper-class="langDropDownStyle" @command="openApplication">
+  <ElDropdown popper-class="fastEnterDropDownStyle" @command="openApplication">
     <!-- 快速入口 -->
     <slot />
 
@@ -11,13 +11,14 @@
           <ElDropdownItem
             :command="item"
             :class="{ 'is-selected': item.path === currentApplication?.path }"
+            :style="{
+              color:
+                item.path === currentApplication?.path
+                  ? currentApplicationTextColor
+                  : 'var(--el-text-color-regular)'
+            }"
           >
             <span class="menu-txt">{{ formatMenuTitle(item.meta.title) }}</span>
-            <AoSvgIcon
-              style="margin-left: 5px"
-              icon="ri:check-fill"
-              v-if="item.path === currentApplication?.path"
-            />
           </ElDropdownItem>
         </div>
       </ElDropdownMenu>
@@ -26,11 +27,12 @@
 </template>
 
 <script setup lang="ts">
-  import { AoSvgIcon } from '@ao/admin-components'
   import { computed } from 'vue'
+  import { storeToRefs } from 'pinia'
   import { getMenuSource } from '../install/context'
   import { useRouter } from 'vue-router'
   import { ElDropdown, ElDropdownItem, ElDropdownMenu } from 'element-plus'
+  import { useSettingStore } from '../store/modules/setting'
   import type { AppRouteRecord } from '../types/router'
   import { getFirstMenuPath } from '../utils/navigation/route'
   import { formatMenuTitle } from '../utils/router'
@@ -40,6 +42,26 @@
   const router = useRouter()
   const applicationList = computed(() => getMenuSource().applicationList)
   const currentApplication = computed(() => getMenuSource().currentApplication)
+  const { systemThemeColor } = storeToRefs(useSettingStore())
+  const currentApplicationTextColor = computed(() => getContrastTextColor(systemThemeColor.value))
+
+  /**
+   * @description 根据主题色亮度选择可读性更好的选中项文字颜色。
+   * @param color 当前系统主题色，格式为六位十六进制颜色。
+   * @return 与背景对比度更高的黑色或白色。
+   */
+  const getContrastTextColor = (color: string): string => {
+    const channels = color.match(/[0-9a-f]{2}/gi)
+    if (!channels || channels.length < 3) return 'var(--ao-white)'
+
+    const [red, green, blue] = channels.slice(0, 3).map((channel) => {
+      const value = parseInt(channel, 16) / 255
+      return value <= 0.04045 ? value / 12.92 : ((value + 0.055) / 1.055) ** 2.4
+    })
+    const luminance = 0.2126 * red + 0.7152 * green + 0.0722 * blue
+
+    return luminance > 0.179 ? 'var(--ao-black)' : 'var(--ao-white)'
+  }
 
   /**
    * @description 在新浏览器标签中打开目标业务系统首页。

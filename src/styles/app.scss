@@ -57,6 +57,18 @@
   }
 }
 
+// 快速入口当前系统：通过主题色背景与自适应文字强化选中反馈
+.fastEnterDropDownStyle {
+  .el-dropdown-menu__item:not(.is-selected) {
+    color: var(--el-text-color-regular) !important;
+  }
+
+  .is-selected {
+    font-weight: 600;
+    background-color: var(--theme-color) !important;
+  }
+}
+
 // 下拉触发器焦点环抑制：ElDropdown 会给触发器（头部语言切换、快速入口等）注入 tabindex=0，
 // 且 hover 展开时聚焦触发器（tooltip focus-on-target），触发器匹配 :focus-visible 后浏览器
 // 原生焦点环表现为按钮四周黑框。与头部其他不可聚焦的图标按钮观感保持一致，统一去除
