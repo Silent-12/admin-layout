@@ -7,4 +7,4 @@
  */
 
 /** 当前布局包版本号 */
-export const version: string = '5'
+export const version: string = '6'
