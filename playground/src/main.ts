@@ -99,7 +99,7 @@ const menuList: AppRouteRecord[] = [
 const applicationList: AppRouteRecord[] = [
   {
     path: '/demo-system',
-    meta: { title: '示例系统' },
+    meta: { title: '示例系统', icon: 'ri:apps-2-line' },
     children: [{ path: '/page-a', component: 'page-a', meta: { title: '页面 A' } }]
   },
   {

@@ -12,6 +12,7 @@
             :command="item"
             :class="{ 'is-selected': item.path === currentApplication?.path }"
           >
+            <AoSvgIcon v-if="item.meta.icon" :icon="item.meta.icon" style="margin-right: 8px" />
             <span class="menu-txt">{{ formatMenuTitle(item.meta.title) }}</span>
             <AoSvgIcon
               style="margin-left: 5px"

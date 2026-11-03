@@ -1,4 +1,4 @@
-import { ref as T, defineAsyncComponent as Ue, defineComponent as Q, computed as M, openBlock as m, createElementBlock as p, Fragment as Y, renderList as ee, createBlock as U, resolveDynamicComponent as Qe, unref as i, withCtx as N, renderSlot as xe, createVNode as w, normalizeClass as ne, createElementVNode as h, toDisplayString as O, createCommentVNode as X, watch as he, withDirectives as ue, withModifiers as Me, normalizeStyle as J, vShow as de, createTextVNode as we, useCssVars as vt, onUnmounted as ke, Transition as Je, onMounted as Te, nextTick as ye, watchEffect as pt, shallowRef as yt, resolveComponent as Ze, KeepAlive as bt, Teleport as _t, normalizeProps as xt, guardReactiveProps as At, createSlots as Tt, isRef as et } from "vue";
+import { ref as T, defineAsyncComponent as Ue, defineComponent as Q, computed as M, openBlock as m, createElementBlock as p, Fragment as Y, renderList as ee, createBlock as K, resolveDynamicComponent as Qe, unref as i, withCtx as N, renderSlot as xe, createVNode as w, normalizeClass as ne, createCommentVNode as X, createElementVNode as h, toDisplayString as O, watch as he, withDirectives as ue, withModifiers as Me, normalizeStyle as J, vShow as de, createTextVNode as we, useCssVars as vt, onUnmounted as ke, Transition as Je, onMounted as Te, nextTick as ye, watchEffect as pt, shallowRef as yt, resolveComponent as Ze, KeepAlive as bt, Teleport as _t, normalizeProps as xt, guardReactiveProps as At, createSlots as Tt, isRef as et } from "vue";
 import { AoSvgIcon as z, AoLogo as wt, AoIconButton as ve } from "@ao/admin-components";
 import { useRouter as $e, useRoute as Fe } from "vue-router";
 import { ElDropdown as tt, ElDropdownMenu as nt, ElDropdownItem as ot, ElButton as st, ElMessage as Ce, ElSubMenu as St, ElMenuItem as kt, ElScrollbar as at, ElMenu as Ct, ElDrawer as Et, ElSwitch as Mt, ElInputNumber as Bt, ElSelect as $t, ElOption as Lt, ElDialog as It, ElInput as Dt } from "element-plus";
@@ -53,7 +53,7 @@ const Zt = (e) => {
   __name: "AoGlobalComponent",
   setup(e) {
     const t = M(() => sn());
-    return (n, s) => (m(!0), p(Y, null, ee(t.value, (c) => (m(), U(Qe(c.component), {
+    return (n, s) => (m(!0), p(Y, null, ee(t.value, (c) => (m(), K(Qe(c.component), {
       key: c.key
     }))), 128));
   }
@@ -101,7 +101,7 @@ const ca = (e) => {
       const o = t.resolve({ path: l }).href;
       window.open(o, "_blank", "noopener");
     };
-    return (r, l) => (m(), U(i(tt), {
+    return (r, l) => (m(), K(i(tt), {
       "popper-class": "langDropDownStyle",
       onCommand: c
     }, {
@@ -117,9 +117,14 @@ const ca = (e) => {
                 class: ne({ "is-selected": o.path === s.value?.path })
               }, {
                 default: N(() => [
-                  h("span", ln, O(i(fe)(o.meta.title)), 1),
-                  o.path === s.value?.path ? (m(), U(i(z), {
+                  o.meta.icon ? (m(), K(i(z), {
                     key: 0,
+                    icon: o.meta.icon,
+                    style: { "margin-right": "8px" }
+                  }, null, 8, ["icon"])) : X("", !0),
+                  h("span", ln, O(i(fe)(o.meta.title)), 1),
+                  o.path === s.value?.path ? (m(), K(i(z), {
+                    key: 1,
                     style: { "margin-left": "5px" },
                     icon: "ri:check-fill"
                   })) : X("", !0)
@@ -292,11 +297,11 @@ const ca = (e) => {
       handlePendingAll: () => {
         console.log("查看全部待办");
       }
-    }), { noticeList: L, msgList: v, pendingList: k, barList: I } = g(), { getNoticeStyle: A } = f(), { showNotice: G } = E(), { handleNoticeAll: V, handleMsgAll: K, handlePendingAll: Z } = H(), { changeBar: ae, currentTabIsEmpty: q, handleViewAll: le } = y(
+    }), { noticeList: L, msgList: v, pendingList: k, barList: I } = g(), { getNoticeStyle: A } = f(), { showNotice: G } = E(), { handleNoticeAll: V, handleMsgAll: U, handlePendingAll: Z } = H(), { changeBar: ae, currentTabIsEmpty: q, handleViewAll: le } = y(
       L,
       v,
       k,
-      { handleNoticeAll: V, handleMsgAll: K, handlePendingAll: Z }
+      { handleNoticeAll: V, handleMsgAll: U, handlePendingAll: Z }
     );
     return he(
       () => s.value,
@@ -1055,7 +1060,7 @@ const Re = Le(
       Z();
     }, V = (B) => {
       B.key === "Escape" && Z();
-    }, K = (B) => {
+    }, U = (B) => {
       B.preventDefault(), B.stopPropagation(), o && (window.clearTimeout(o), o = null), l.value = v(B), r.value = !0, c("show"), o = window.setTimeout(() => {
         r.value && k(), o = null;
       }, 50);
@@ -1072,7 +1077,7 @@ const Re = Le(
     return ke(() => {
       I(), o && (window.clearTimeout(o), o = null);
     }), t({
-      show: K,
+      show: U,
       hide: Z,
       visible: M(() => r.value)
     }), (B, $) => (m(), p("div", Xn, [
@@ -1099,7 +1104,7 @@ const Re = Le(
                   style: J(y.value)
                 }, [
                   h("div", Yn, [
-                    a.icon ? (m(), U(i(z), {
+                    a.icon ? (m(), K(i(z), {
                       key: 0,
                       class: "menu-item-icon",
                       icon: a.icon
@@ -1120,7 +1125,7 @@ const Re = Le(
                       style: J(y.value),
                       onClick: (_) => ae(u)
                     }, [
-                      u.icon ? (m(), U(i(z), {
+                      u.icon ? (m(), K(i(z), {
                         key: 0,
                         class: "menu-item-icon-child",
                         icon: u.icon
@@ -1134,7 +1139,7 @@ const Re = Le(
                   style: J(y.value),
                   onClick: (u) => ae(a)
                 }, [
-                  a.icon ? (m(), U(i(z), {
+                  a.icon ? (m(), K(i(z), {
                     key: 0,
                     class: "menu-item-icon",
                     icon: a.icon
@@ -1293,7 +1298,7 @@ const Re = Le(
         },
         adjustPositionAfterClose: S
       };
-    }, K = (d) => {
+    }, U = (d) => {
       const S = (b) => {
         c.push({
           path: b.path,
@@ -1335,7 +1340,7 @@ const Re = Le(
           })[F] && c.push(L.value), x(F, L.value);
         }
       };
-    }, { menuItems: Z } = A(), { setTransition: ae, autoPositionTab: q } = G(), { setupEventListeners: le, cleanupEventListeners: B, adjustPositionAfterClose: $ } = V(), { clickTab: a, closeWorktab: u, showMenu: _, handleSelect: R } = K($);
+    }, { menuItems: Z } = A(), { setTransition: ae, autoPositionTab: q } = G(), { setupEventListeners: le, cleanupEventListeners: B, adjustPositionAfterClose: $ } = V(), { clickTab: a, closeWorktab: u, showMenu: _, handleSelect: R } = U($);
     return Te(() => {
       le(), q();
     }), ke(() => {
@@ -1487,7 +1492,7 @@ const { LIGHT: ze, DARK: ro } = j, co = (e) => {
 function uo() {
   const e = te(), t = M(() => Oe), { showMenuButton: n, showFastEnter: s, showLanguage: c, showNotification: r } = oe(e), l = (q) => t.value[q]?.enabled ?? !1, o = (q) => t.value[q], g = M(() => l("menuButton") && n.value), f = M(() => l("fastEnter") && s.value), E = M(() => l("globalSearch")), y = M(() => l("fullscreen")), H = M(() => l("notification") && r.value), L = M(() => l("language") && c.value), v = M(() => l("settings")), k = M(() => l("themeToggle")), I = M(() => o("fastEnter")?.minWidth || 1200), A = (q) => l(q), G = (q) => o(q), V = () => Object.keys(t.value).filter(
     (q) => t.value[q]?.enabled
-  ), K = () => Object.keys(t.value).filter(
+  ), U = () => Object.keys(t.value).filter(
     (q) => !t.value[q]?.enabled
   );
   return {
@@ -1524,11 +1529,11 @@ function uo() {
     // 获取功能配置（别名）
     getEnabledFeatures: V,
     // 获取所有启用的功能
-    getDisabledFeatures: K,
+    getDisabledFeatures: U,
     // 获取所有禁用的功能
     getActiveFeatures: () => V(),
     // 获取所有启用的功能（别名）
-    getInactiveFeatures: () => K()
+    getInactiveFeatures: () => U()
     // 获取所有禁用的功能（别名）
   };
 }
@@ -1549,7 +1554,7 @@ const ho = { class: "header-bar" }, mo = { class: "header-bar__inner" }, fo = { 
       shouldShowSettings: k,
       shouldShowThemeToggle: I,
       fastEnterMinWidth: A
-    } = uo(), { menuOpen: G, isDark: V } = oe(o), K = T(!1), { isFullscreen: Z, toggle: ae } = Ht();
+    } = uo(), { menuOpen: G, isDark: V } = oe(o), U = T(!1), { isFullscreen: Z, toggle: ae } = Ht();
     Te(() => {
       u(), document.addEventListener("click", S);
     }), ke(() => {
@@ -1570,11 +1575,11 @@ const ho = { class: "header-bar" }, mo = { class: "header-bar__inner" }, fo = { 
     }, d = () => {
       g.openSettingsPanel();
     }, S = (C) => {
-      if (!K.value) return;
+      if (!U.value) return;
       const D = C.target, b = D.closest(".notice-button"), F = D.closest(".ao-notification-panel");
-      !b && !F && (K.value = !1);
+      !b && !F && (U.value = !1);
     }, x = () => {
-      K.value = !K.value;
+      U.value = !U.value;
     };
     return (C, D) => (m(), p("div", ho, [
       h("div", mo, [
@@ -1583,13 +1588,13 @@ const ho = { class: "header-bar" }, mo = { class: "header-bar__inner" }, fo = { 
             class: "header-bar__logo-hidden",
             onClick: a
           }),
-          i(f) ? (m(), U(i(ve), {
+          i(f) ? (m(), K(i(ve), {
             key: 0,
             icon: "ri:menu-2-fill",
             class: "header-bar__menu-btn",
             onClick: le
           })) : X("", !0),
-          i(E) && i(l) >= i(A) ? (m(), U(rn, { key: 1 }, {
+          i(E) && i(l) >= i(A) ? (m(), K(rn, { key: 1 }, {
             default: N(() => [
               w(i(ve), {
                 icon: "ri:function-line",
@@ -1614,11 +1619,11 @@ const ho = { class: "header-bar" }, mo = { class: "header-bar__inner" }, fo = { 
               h("span", po, O(C.$t("topBar.search.title")), 1)
             ]),
             h("div", yo, [
-              i(s) ? (m(), U(i(z), {
+              i(s) ? (m(), K(i(z), {
                 key: 0,
                 icon: "vaadin:ctrl-a",
                 class: "search-box__shortcut-icon"
-              })) : (m(), U(i(z), {
+              })) : (m(), K(i(z), {
                 key: 1,
                 icon: "ri:command-fill",
                 class: "search-box__shortcut-icon-mac"
@@ -1626,7 +1631,7 @@ const ho = { class: "header-bar" }, mo = { class: "header-bar__inner" }, fo = { 
               D[1] || (D[1] = h("span", { class: "search-box__shortcut-key" }, "k", -1))
             ])
           ])) : X("", !0),
-          i(H) ? (m(), U(i(ve), {
+          i(H) ? (m(), K(i(ve), {
             key: 1,
             icon: i(Z) ? "ri:fullscreen-exit-line" : "ri:fullscreen-fill",
             class: ne([
@@ -1635,7 +1640,7 @@ const ho = { class: "header-bar" }, mo = { class: "header-bar__inner" }, fo = { 
             ]),
             onClick: q
           }, null, 8, ["icon", "class"])) : X("", !0),
-          i(v) ? (m(), U(i(tt), {
+          i(v) ? (m(), K(i(tt), {
             key: 2,
             onCommand: _,
             "popper-class": "langDropDownStyle"
@@ -1653,7 +1658,7 @@ const ho = { class: "header-bar" }, mo = { class: "header-bar__inner" }, fo = { 
                     }, {
                       default: N(() => [
                         h("span", bo, O(b.label), 1),
-                        i(r) === b.value ? (m(), U(i(z), {
+                        i(r) === b.value ? (m(), K(i(z), {
                           key: 0,
                           icon: "ri:check-fill"
                         })) : X("", !0)
@@ -1673,7 +1678,7 @@ const ho = { class: "header-bar" }, mo = { class: "header-bar__inner" }, fo = { 
             ]),
             _: 1
           })) : X("", !0),
-          i(L) ? (m(), U(i(ve), {
+          i(L) ? (m(), K(i(ve), {
             key: 3,
             icon: "ri:notification-2-line",
             class: "notice-button header-bar__notice-btn",
@@ -1684,13 +1689,13 @@ const ho = { class: "header-bar" }, mo = { class: "header-bar__inner" }, fo = { 
             ])]),
             _: 1
           })) : X("", !0),
-          i(k) ? (m(), U(i(ve), {
+          i(k) ? (m(), K(i(ve), {
             key: 4,
             icon: "ri:settings-line",
             class: "setting-btn",
             onClick: d
           })) : X("", !0),
-          i(I) ? (m(), U(i(ve), {
+          i(I) ? (m(), K(i(ve), {
             key: 5,
             onClick: i(co),
             icon: i(V) ? "ri:sun-fill" : "ri:moon-line"
@@ -1701,8 +1706,8 @@ const ho = { class: "header-bar" }, mo = { class: "header-bar__inner" }, fo = { 
         ])
       ]),
       w(Hn, {
-        value: K.value,
-        "onUpdate:value": D[0] || (D[0] = (b) => K.value = b),
+        value: U.value,
+        "onUpdate:value": D[0] || (D[0] = (b) => U.value = b),
         ref: "notice"
       }, null, 8, ["value"])
     ]));
@@ -1796,7 +1801,7 @@ const ko = { id: "app-content-header" }, Co = {
         h("div", ko, [
           i(l) === "true" ? (m(), p("div", Co, " router meta：" + O(i(t).meta), 1)) : X("", !0)
         ]),
-        r.value ? (m(), U(I, {
+        r.value ? (m(), K(I, {
           key: 0,
           style: H
         }, {
@@ -1807,11 +1812,11 @@ const ko = { id: "app-content-header" }, Co = {
               appear: ""
             }, {
               default: N(() => [
-                (m(), U(bt, {
+                (m(), K(bt, {
                   max: 10,
                   exclude: c.value
                 }, [
-                  (m(), U(Qe(A), {
+                  (m(), K(Qe(A), {
                     class: "ao-page-view",
                     key: G.path
                   }))
@@ -1822,7 +1827,7 @@ const ko = { id: "app-content-header" }, Co = {
           ]),
           _: 1
         })) : X("", !0),
-        (m(), U(_t, { to: "body" }, [
+        (m(), K(_t, { to: "body" }, [
           ue(h("div", Eo, null, 512), [
             [de, o.value]
           ])
@@ -1867,7 +1872,7 @@ const ko = { id: "app-content-header" }, Co = {
       return m(!0), p(Y, null, ee(l.value, (A, G) => (m(), p(Y, {
         key: L(A, G)
       }, [
-        y(A) ? (m(), U(i(St), {
+        y(A) ? (m(), K(i(St), {
           key: 0,
           index: A.path || A.meta.title,
           level: e.level
@@ -1893,7 +1898,7 @@ const ko = { id: "app-content-header" }, Co = {
             }, null, 8, ["list", "is-mobile", "level", "theme"])
           ]),
           _: 2
-        }, 1032, ["index", "level"])) : (m(), U(i(kt), {
+        }, 1032, ["index", "level"])) : (m(), K(i(kt), {
           key: 1,
           index: H(A) ? A.meta.title : A.path || A.meta.title,
           "level-item": e.level + 1,
@@ -1945,11 +1950,11 @@ const ko = { id: "app-content-header" }, Co = {
     }, V = () => {
       y.value && (s.setMenuOpen(!1), k());
     };
-    return he(E, (K) => {
-      K < Ye ? (s.setMenuOpen(!1), r.value || (f.value = !1)) : f.value = !1;
-    }), he(r, (K) => {
-      y.value ? K ? f.value = !0 : k() : f.value = !1;
-    }), (K, Z) => L.value.length > 0 ? (m(), p("div", Vo, [
+    return he(E, (U) => {
+      U < Ye ? (s.setMenuOpen(!1), r.value || (f.value = !1)) : f.value = !1;
+    }), he(r, (U) => {
+      y.value ? U ? f.value = !0 : k() : f.value = !1;
+    }), (U, Z) => L.value.length > 0 ? (m(), p("div", Vo, [
       h("div", {
         class: ne(["menu-left", `menu-left-${i(l).theme} menu-left-${i(r) ? "open" : "close"}`]),
         style: J({
@@ -1964,7 +1969,7 @@ const ko = { id: "app-content-header" }, Co = {
           })
         }, [
           h("div", Wo, [
-            xe(K.$slots, "sidebar-header", {
+            xe(U.$slots, "sidebar-header", {
               menuOpen: i(r),
               theme: i(l)
             }, void 0, !0)
@@ -2389,11 +2394,11 @@ const is = { class: "setting-box-wrap" }, rs = ["onClick"], cs = ["src"], us = {
     };
     return (l, o) => (m(), p("div", xs, [
       h("span", As, O(e.config.label), 1),
-      e.config.type === "switch" ? (m(), U(i(Mt), {
+      e.config.type === "switch" ? (m(), K(i(Mt), {
         key: 0,
         "model-value": e.modelValue,
         onChange: r
-      }, null, 8, ["model-value"])) : e.config.type === "input-number" ? (m(), U(i(Bt), {
+      }, null, 8, ["model-value"])) : e.config.type === "input-number" ? (m(), K(i(Bt), {
         key: 1,
         "model-value": e.modelValue,
         min: e.config.min,
@@ -2402,14 +2407,14 @@ const is = { class: "setting-box-wrap" }, rs = ["onClick"], cs = ["src"], us = {
         style: J(e.config.style),
         "controls-position": e.config.controlsPosition,
         onChange: r
-      }, null, 8, ["model-value", "min", "max", "step", "style", "controls-position"])) : e.config.type === "select" ? (m(), U(i($t), {
+      }, null, 8, ["model-value", "min", "max", "step", "style", "controls-position"])) : e.config.type === "select" ? (m(), K(i($t), {
         key: 2,
         "model-value": e.modelValue,
         style: J(e.config.style),
         onChange: r
       }, {
         default: N(() => [
-          (m(!0), p(Y, null, ee(c.value, (g) => (m(), U(i(Lt), {
+          (m(!0), p(Y, null, ee(c.value, (g) => (m(), K(i(Lt), {
             key: g.value,
             label: g.label,
             value: g.value
@@ -2445,7 +2450,7 @@ const is = { class: "setting-box-wrap" }, rs = ["onClick"], cs = ["src"], us = {
         title: L.$t("setting.basics.title"),
         class: "basic-settings-title"
       }, null, 8, ["title"]),
-      (m(!0), p(Y, null, ee(i(n), (k) => (m(), U(ws, {
+      (m(!0), p(Y, null, ee(i(n), (k) => (m(), K(ws, {
         key: k.key,
         config: k,
         "model-value": y(k.key),
@@ -2584,11 +2589,11 @@ const is = { class: "setting-box-wrap" }, rs = ["onClick"], cs = ["src"], us = {
       };
       return d.forEach(D), C;
     }, A = () => {
-      H.value = !0, r.value ? (f.value = (f.value - 1 + l.value.length) % l.value.length, V()) : (E.value = (E.value - 1 + o.value.length) % o.value.length, K()), setTimeout(() => {
+      H.value = !0, r.value ? (f.value = (f.value - 1 + l.value.length) % l.value.length, V()) : (E.value = (E.value - 1 + o.value.length) % o.value.length, U()), setTimeout(() => {
         H.value = !1;
       }, 100);
     }, G = () => {
-      H.value = !0, r.value ? (f.value = (f.value + 1) % l.value.length, V()) : (E.value = (E.value + 1) % o.value.length, K()), setTimeout(() => {
+      H.value = !0, r.value ? (f.value = (f.value + 1) % l.value.length, V()) : (E.value = (E.value + 1) % o.value.length, U()), setTimeout(() => {
         H.value = !1;
       }, 100);
     }, V = () => {
@@ -2601,7 +2606,7 @@ const is = { class: "setting-box-wrap" }, rs = ["onClick"], cs = ["src"], us = {
         const x = S[f.value], C = x.offsetHeight, D = d.scrollTop, b = d.clientHeight, F = x.offsetTop, P = F + C;
         F < D ? y.value.setScrollTop(F) : P > D + b && y.value.setScrollTop(P - b);
       });
-    }, K = () => {
+    }, U = () => {
       ye(() => {
         if (!y.value || !o.value.length) return;
         const d = y.value.wrapRef;
